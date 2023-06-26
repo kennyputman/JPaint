@@ -5,15 +5,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import model.Point;
+import view.gui.PaintCanvas;
 
 public class ClickHandler extends MouseAdapter {
 
     private Point startPoint;
     private Point endPoint;
-    Graphics2D graphics2d;
+    PaintCanvas paintCanvas;
 
-    public ClickHandler(Graphics g) {
-        this.graphics2d = (Graphics2D)g;
+    public ClickHandler(PaintCanvas p) {
+        this.paintCanvas = p;
     }
 
     @Override
@@ -23,6 +24,8 @@ public class ClickHandler extends MouseAdapter {
 
     @Override
     public void mouseReleased(MouseEvent e) {
+
+        Graphics2D graphics2d = (Graphics2D) paintCanvas.getGraphics();
 
         endPoint = new Point(e.getX(), e.getY());
 

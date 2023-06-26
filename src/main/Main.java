@@ -25,6 +25,6 @@ public class Main {
 
         new JPaintController(uiModule, appState);
 
-        paintCanvas.addMouseListener(new ClickHandler(paintCanvas.getGraphics()));
+        paintCanvas.addMouseListener(new ClickHandler(paintCanvas));
     }
 }
