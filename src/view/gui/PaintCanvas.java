@@ -27,5 +27,8 @@ public class PaintCanvas extends JComponent {
         graphics2d.setStroke(stroke);
         graphics2d.setColor(Color.BLACK);
         graphics2d.drawRect(7, 8, 210, 410);
+
+
+        // Once these are set you can use paintCanvas.Repaint
     }
 }
