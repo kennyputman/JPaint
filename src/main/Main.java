@@ -15,9 +15,13 @@ import view.handlers.ClickHandler;
 public class Main {
     public static void main(String[] args){
 
+        // TODO 1. validate shape factory... is it static, abstract?
+        // TODO 2.
+        // TODO 3.
+        // TODO 4. create readme with description
+
         //Will need to modify this
         PaintCanvas paintCanvas = new PaintCanvas();
-        IShapeFactory shapeFactory = new ShapeFactory();
 
 
         //Won't need to change this
@@ -25,6 +29,9 @@ public class Main {
         IUiModule uiModule = new Gui(guiWindow);
 
         ApplicationState appState = new ApplicationState(uiModule);
+
+        // my initializations
+        IShapeFactory shapeFactory = new ShapeFactory();
 
         new JPaintController(uiModule, appState);
 

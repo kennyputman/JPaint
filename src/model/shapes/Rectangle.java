@@ -15,7 +15,6 @@ public class Rectangle implements IShape {
         this.width = width;
     }
 
-
     public int getX() {
         return x;
     }

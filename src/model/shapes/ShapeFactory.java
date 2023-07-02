@@ -4,6 +4,11 @@ import model.Point;
 import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
 
+
+/**
+ * Abstract factory for IShape interface
+ *
+ */
 public class ShapeFactory implements IShapeFactory {
     @Override
     public IShape createRectangle(Point startPoint, Point endPoint) {
