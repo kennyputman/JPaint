@@ -1,5 +1,7 @@
 package view;
 
+import view.interfaces.IUndoable;
+
 import java.util.Stack;
 
 public class CommandHistory {

@@ -4,8 +4,7 @@ import model.Point;
 import model.ShapeType;
 import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
-
-import java.awt.*;
+import view.interfaces.IUndoable;
 
 public class Command implements IUndoable {
 
@@ -25,12 +24,6 @@ public class Command implements IUndoable {
     }
 
     @Override
-    public IShape getShape() {
-        return shape;
-    }
-
-
-    @Override
     public void redo() {
 
     }
@@ -39,4 +32,17 @@ public class Command implements IUndoable {
     public void undo() {
 
     }
+
+    @Override
+    public IShape getShape() {
+        return shape;
+    }
+
+    @Override
+    public ShapeType getShapeType() {
+        return shapeType;
+    }
+
+
+
 }

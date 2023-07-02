@@ -1,6 +1,7 @@
 package controller;
 
 import model.interfaces.IApplicationState;
+import view.CommandHistory;
 import view.EventName;
 import view.interfaces.IUiModule;
 
@@ -30,9 +31,11 @@ public class JPaintController implements IJPaintController {
     }
 
     private void undo() {
+        CommandHistory.undo();
     }
 
     private void redo() {
+        CommandHistory.redo();
     }
 
     private void copy() {
