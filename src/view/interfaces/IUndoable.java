@@ -4,9 +4,12 @@ import model.Point;
 import model.ShapeType;
 import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
+import view.gui.PaintCanvas;
 
 public interface IUndoable {
-    public void createShape(Point start, Point end, ShapeType type, IShapeFactory shapeFactory);
+
+    // QUESTION should createShape and getters be in this? seems wrong.
+    public void execute(Point start, Point end, ShapeType type, IShapeFactory shapeFactory, PaintCanvas p);
 
     public IShape getShape();
 

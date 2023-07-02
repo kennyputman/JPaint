@@ -4,7 +4,10 @@ import model.Point;
 import model.ShapeType;
 import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
+import view.gui.PaintCanvas;
 import view.interfaces.IUndoable;
+
+import java.awt.*;
 
 public class Command implements IUndoable {
 
@@ -13,13 +16,16 @@ public class Command implements IUndoable {
     ShapeType shapeType;
 
     @Override
-    public void createShape(Point start, Point end, ShapeType type, IShapeFactory shapeFactory) {
+    public void execute(Point start, Point end, ShapeType type, IShapeFactory shapeFactory, PaintCanvas paintCanvas) {
         this.shapeType = type;
+        Graphics2D graphics2d = (Graphics2D) paintCanvas.getGraphics();
 
         if(type == ShapeType.RECTANGLE){
 
             shape = shapeFactory.createRectangle(start, end);
         }
+
+        paintCanvas.paint(graphics2d);
 
     }
 

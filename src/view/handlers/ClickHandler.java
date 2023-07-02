@@ -34,13 +34,13 @@ public class ClickHandler extends MouseAdapter {
 
         endPoint = new Point(e.getX(), e.getY());
 
-        Graphics2D graphics2d = (Graphics2D) paintCanvas.getGraphics();
+
 
         Command command = new Command();
-        command.createShape(startPoint, endPoint, ShapeType.RECTANGLE, shapeFactory);
+
+        command.execute(startPoint, endPoint, ShapeType.RECTANGLE, shapeFactory, paintCanvas);
         CommandHistory.add(command);
 
-        this.paintCanvas.paint(graphics2d);
 
     }
 
