@@ -1,7 +1,9 @@
 package main;
 
 import controller.JPaintController;
+import model.interfaces.IShapeFactory;
 import model.persistence.ApplicationState;
+import model.shapes.ShapeFactory;
 import view.gui.Gui;
 import view.gui.GuiWindow;
 import view.gui.PaintCanvas;
@@ -15,6 +17,7 @@ public class Main {
 
         //Will need to modify this
         PaintCanvas paintCanvas = new PaintCanvas();
+        IShapeFactory shapeFactory = new ShapeFactory();
 
 
         //Won't need to change this
@@ -25,6 +28,6 @@ public class Main {
 
         new JPaintController(uiModule, appState);
 
-        paintCanvas.addMouseListener(new ClickHandler(paintCanvas));
+        paintCanvas.addMouseListener(new ClickHandler(paintCanvas, shapeFactory));
     }
 }
