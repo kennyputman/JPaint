@@ -1,5 +1,6 @@
 package model.shapes;
 
+import model.ShapeType;
 import model.interfaces.IShape;
 
 public class Rectangle implements IShape {
@@ -29,5 +30,10 @@ public class Rectangle implements IShape {
 
     public int getWidth() {
         return width;
+    }
+
+    @Override
+    public ShapeType getShapeType() {
+        return ShapeType.RECTANGLE;
     }
 }

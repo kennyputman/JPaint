@@ -1,6 +1,6 @@
-package view;
+package model.commands;
 
-import view.interfaces.IUndoable;
+import model.interfaces.IUndoable;
 
 import java.util.Stack;
 
@@ -34,7 +34,4 @@ public class CommandHistory {
 		return result;
 	}
 
-	public static Stack<IUndoable> getUndoStack(){
-		return undoStack;
-	}
 }

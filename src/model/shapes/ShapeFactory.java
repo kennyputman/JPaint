@@ -1,6 +1,5 @@
 package model.shapes;
 
-import model.Point;
 import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
 

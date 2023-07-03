@@ -2,13 +2,18 @@ package view.gui;
 
 import model.ShapeType;
 import model.interfaces.IShape;
-import view.CommandHistory;
-import view.interfaces.IUndoable;
+import model.persistence.ShapeList;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class PaintCanvas extends JComponent {
+
+    private ShapeList shapeList;
+
+    public PaintCanvas(ShapeList shapeList) {
+        this.shapeList = shapeList;
+    }
 
     @Override
     public void paint(Graphics g) {
@@ -17,21 +22,20 @@ public class PaintCanvas extends JComponent {
 
         // Draw all shapes here
 
-        for (IUndoable command : CommandHistory.getUndoStack()) {
-            IShape s = command.getShape();
+        for (IShape shape : this.shapeList.getShapeList()) {
 
-            if (command.getShapeType() == ShapeType.RECTANGLE) {
+            if (shape.getShapeType() == ShapeType.RECTANGLE) {
                 graphics2d.setColor(Color.GREEN);
-                graphics2d.fillRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+                graphics2d.fillRect(shape.getX(), shape.getY(), shape.getWidth(), shape.getHeight());
 
                 graphics2d.setStroke(new BasicStroke(5));
                 graphics2d.setColor(Color.BLUE);
-                graphics2d.drawRect(s.getX(), s.getY(), s.getWidth(), s.getHeight());
+                graphics2d.drawRect(shape.getX(), shape.getY(), shape.getWidth(), shape.getHeight());
 
                 Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
                 graphics2d.setStroke(stroke);
                 graphics2d.setColor(Color.BLACK);
-                graphics2d.drawRect(s.getX() - 5, s.getY() - 5, s.getWidth() + 10, s.getHeight() + 10);
+                graphics2d.drawRect(shape.getX() - 5, shape.getY() - 5, shape.getWidth() + 10, shape.getHeight() + 10);
             }
 
         }

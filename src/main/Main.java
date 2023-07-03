@@ -3,6 +3,7 @@ package main;
 import controller.JPaintController;
 import model.interfaces.IShapeFactory;
 import model.persistence.ApplicationState;
+import model.persistence.ShapeList;
 import model.shapes.ShapeFactory;
 import view.gui.Gui;
 import view.gui.GuiWindow;
@@ -20,8 +21,9 @@ public class Main {
         // TODO 3.
         // TODO 4. create readme with description
 
+        ShapeList shapeList = new ShapeList();
         //Will need to modify this
-        PaintCanvas paintCanvas = new PaintCanvas();
+        PaintCanvas paintCanvas = new PaintCanvas(shapeList);
 
 
         //Won't need to change this
@@ -35,6 +37,6 @@ public class Main {
 
         new JPaintController(uiModule, appState);
 
-        paintCanvas.addMouseListener(new ClickHandler(paintCanvas, shapeFactory));
+        paintCanvas.addMouseListener(new ClickHandler(paintCanvas, shapeFactory, shapeList));
     }
 }

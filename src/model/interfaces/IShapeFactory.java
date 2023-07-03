@@ -1,6 +1,6 @@
 package model.interfaces;
 
-import model.Point;
+import model.shapes.Point;
 
 
 public interface IShapeFactory {
