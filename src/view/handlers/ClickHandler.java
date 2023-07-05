@@ -1,7 +1,7 @@
 package view.handlers;
 
 import model.shapes.Point;
-import model.ShapeType;
+import model.types.ShapeType;
 import model.commands.CommandHistory;
 import model.commands.CreateShapeCommand;
 import model.interfaces.IShapeFactory;

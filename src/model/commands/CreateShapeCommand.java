@@ -1,10 +1,9 @@
 package model.commands;
 
-import jdk.jshell.spi.ExecutionControl;
 import model.interfaces.ICommand;
 import model.interfaces.IUndoable;
 import model.shapes.Point;
-import model.ShapeType;
+import model.types.ShapeType;
 import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
 import model.persistence.ShapeList;

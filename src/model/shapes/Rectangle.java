@@ -1,6 +1,6 @@
 package model.shapes;
 
-import model.ShapeType;
+import model.types.ShapeType;
 import model.interfaces.IShape;
 
 public class Rectangle implements IShape {

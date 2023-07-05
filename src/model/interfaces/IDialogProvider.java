@@ -1,9 +1,9 @@
 package model.interfaces;
 
-import model.ShapeColor;
-import model.ShapeShadingType;
-import model.ShapeType;
-import model.MouseMode;
+import model.types.ShapeColor;
+import model.types.ShapeShadingType;
+import model.types.ShapeType;
+import model.types.MouseMode;
 import view.interfaces.IDialogChoice;
 
 public interface IDialogProvider {

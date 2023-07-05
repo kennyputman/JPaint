@@ -1,6 +1,6 @@
 package model.interfaces;
 
-import model.ShapeType;
+import model.types.ShapeType;
 
 public interface IShape {
     int getX();

@@ -1,6 +1,6 @@
 package view.gui;
 
-import model.ShapeType;
+import model.types.ShapeType;
 import model.interfaces.IShape;
 import model.persistence.ShapeList;
 

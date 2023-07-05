@@ -1,9 +1,9 @@
 package model.persistence;
 
-import model.ShapeColor;
-import model.ShapeShadingType;
-import model.ShapeType;
-import model.MouseMode;
+import model.types.ShapeColor;
+import model.types.ShapeShadingType;
+import model.types.ShapeType;
+import model.types.MouseMode;
 import model.dialogs.DialogProvider;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
