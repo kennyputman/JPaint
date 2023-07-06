@@ -1,7 +1,7 @@
 package controller;
 
-import model.interfaces.IApplicationState;
 import model.commands.CommandHistory;
+import model.interfaces.IApplicationState;
 import view.EventName;
 import view.interfaces.IUiModule;
 

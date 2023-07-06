@@ -1,31 +1,30 @@
 package model.commands;
 
 import model.interfaces.ICommand;
-import model.interfaces.IUndoable;
-import model.shapes.Point;
-import model.types.ShapeType;
 import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
+import model.interfaces.IUndoable;
 import model.persistence.ShapeList;
+import model.shapes.Point;
+import model.shapes.ShapeFactory;
+import model.types.ShapeType;
 import view.gui.PaintCanvas;
 
 public class CreateShapeCommand implements ICommand, IUndoable {
 
+    private final ShapeType type;
+    private final IShapeFactory shapeFactory = new ShapeFactory();
+    private final PaintCanvas paintCanvas;
+    private final ShapeList shapeList;
     private IShape createdShape;
     private Point start;
     private Point end;
-    private final ShapeType type;
-    private final IShapeFactory shapeFactory;
-    private final PaintCanvas paintCanvas;
-    private final ShapeList shapeList;
 
     public CreateShapeCommand(
-            Point start, Point end, ShapeType type,
-            IShapeFactory shapeFactory, PaintCanvas paintCanvas, ShapeList shapeList) {
+            Point start, Point end, ShapeType type, PaintCanvas paintCanvas, ShapeList shapeList) {
         this.start = start;
         this.end = end;
         this.type = type;
-        this.shapeFactory = shapeFactory;
         this.paintCanvas = paintCanvas;
         this.shapeList = shapeList;
     }
@@ -33,11 +32,11 @@ public class CreateShapeCommand implements ICommand, IUndoable {
     @Override
     public void execute() {
 
-        if(type == ShapeType.RECTANGLE){
+        if (type == ShapeType.RECTANGLE) {
             createdShape = shapeFactory.createRectangle(start, end);
-        } else if(type == ShapeType.TRIANGLE){
+        } else if (type == ShapeType.TRIANGLE) {
             throw new UnsupportedOperationException();
-        }else if(type == ShapeType.ELLIPSE){
+        } else if (type == ShapeType.ELLIPSE) {
             throw new UnsupportedOperationException();
         } else {
             throw new RuntimeException("Error: Shape type cannot be found");

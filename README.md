@@ -4,6 +4,11 @@ SE 450 Summer 2023
 
 [Github link](https://github.com/kennyputman/JPaint)
 
+## Missing Features and Known Bugs
+- There are no known bugs at this point
+- At this point, shape type and aesthetics are hardcoded. It only draws a green rectangle with a blue border. 
+
+
 ## Design Patterns
 The project uses the following design patterns
 
