@@ -2,6 +2,7 @@ package view.handlers;
 
 import model.commands.CommandHistory;
 import model.commands.CreateShapeCommand;
+import model.persistence.ApplicationState;
 import model.persistence.ShapeList;
 import model.shapes.Point;
 import model.types.ShapeType;
@@ -16,10 +17,12 @@ public class ClickHandler extends MouseAdapter {
     private Point startPoint;
     private Point endPoint;
     private ShapeList shapeList;
+    private ApplicationState applicationState;
 
-    public ClickHandler(PaintCanvas p, ShapeList shapeList) {
+    public ClickHandler(PaintCanvas p, ShapeList shapeList, ApplicationState applicationState) {
         this.paintCanvas = p;
         this.shapeList = shapeList;
+        this.applicationState = applicationState;
     }
 
     @Override
@@ -35,9 +38,9 @@ public class ClickHandler extends MouseAdapter {
         CreateShapeCommand createShapeCommand = new CreateShapeCommand(
                 startPoint,
                 endPoint,
-                ShapeType.RECTANGLE,
                 paintCanvas,
-                shapeList
+                shapeList,
+                applicationState
         );
 
         createShapeCommand.execute();

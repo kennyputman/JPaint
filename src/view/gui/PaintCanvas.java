@@ -23,8 +23,8 @@ public class PaintCanvas extends JComponent {
         // Draw all shapes here
 
         for (IShape shape : this.shapeList.getShapeList()) {
-
-            if (shape.getShapeType() == ShapeType.RECTANGLE) {
+            var opts = shape.getOpts();
+            if (opts.activeShape() == ShapeType.RECTANGLE) {
                 graphics2d.setColor(Color.GREEN);
                 graphics2d.fillRect(shape.getX(), shape.getY(), shape.getWidth(), shape.getHeight());
 

@@ -1,5 +1,6 @@
 package model.interfaces;
 
+import model.AppStateOpts;
 import model.types.ShapeType;
 
 public interface IShape {
@@ -11,5 +12,5 @@ public interface IShape {
 
     int getWidth();
 
-    ShapeType getShapeType();
+    AppStateOpts getOpts();
 }

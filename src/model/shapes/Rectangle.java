@@ -1,5 +1,6 @@
 package model.shapes;
 
+import model.AppStateOpts;
 import model.types.ShapeType;
 import model.interfaces.IShape;
 
@@ -8,12 +9,14 @@ public class Rectangle implements IShape {
     private final int y;
     private final int height;
     private final int width;
+    private final AppStateOpts appStateOpts;
 
-    public Rectangle(int x, int y, int height, int width) {
+    public Rectangle(int x, int y, int height, int width, AppStateOpts appStateOpts) {
         this.x = x;
         this.y = y;
         this.height = height;
         this.width = width;
+        this.appStateOpts = appStateOpts;
     }
 
     public int getX() {
@@ -32,8 +35,7 @@ public class Rectangle implements IShape {
         return width;
     }
 
-    @Override
-    public ShapeType getShapeType() {
-        return ShapeType.RECTANGLE;
+    public AppStateOpts getOpts(){
+        return appStateOpts;
     }
 }
