@@ -65,6 +65,7 @@ public class Main {
 
             State Pattern to manage mouse click between create shape and select shape
             Observer pattern to manage updating multiple shapes at once?
+            Strategy pattern to dictate shape drawing to another thing
          */
 
         ShapeList shapeList = new ShapeList();
