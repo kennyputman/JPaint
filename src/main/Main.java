@@ -1,10 +1,8 @@
 package main;
 
 import controller.JPaintController;
-import model.interfaces.IShapeFactory;
 import model.persistence.ApplicationState;
 import model.persistence.ShapeList;
-import model.shapes.ShapeFactory;
 import view.gui.Gui;
 import view.gui.GuiWindow;
 import view.gui.PaintCanvas;
