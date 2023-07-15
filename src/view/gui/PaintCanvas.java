@@ -1,11 +1,8 @@
 package view.gui;
 
-import model.shapes.Ellipse;
-import model.shapes.Triangle;
-import model.shapes.Rectangle;
-import model.types.ShapeType;
 import model.interfaces.IShape;
 import model.persistence.ShapeList;
+import model.types.ShapeType;
 import view.interfaces.DrawStrategy;
 import view.render.DrawEllipse;
 import view.render.DrawRectangle;
@@ -33,20 +30,16 @@ public class PaintCanvas extends JComponent {
             if (type == ShapeType.RECTANGLE) {
                 strategy = new DrawRectangle();
                 strategy.draw(shape, graphics2d);
-            } else if (type == ShapeType.TRIANGLE){
+            } else if (type == ShapeType.TRIANGLE) {
                 strategy = new DrawTriangle();
                 strategy.draw(shape, graphics2d);
-            } else if (type == ShapeType.ELLIPSE){
+            } else if (type == ShapeType.ELLIPSE) {
                 strategy = new DrawEllipse();
                 strategy.draw(shape, graphics2d);
             } else {
                 throw new IllegalArgumentException("Invalid Shape Type");
             }
         }
-
         this.repaint();
-        // Once these are set you can use paintCanvas.Repaint
-
-
     }
 }
