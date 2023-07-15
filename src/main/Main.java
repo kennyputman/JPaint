@@ -16,7 +16,7 @@ import view.handlers.ClickHandler;
 public class Main {
     public static void main(String[] args){
 
-        /* TODO
+        /* NOTE
 
             - Draw Rectangles, Ellipses, and Triangles
             - Draw shapes with various colors

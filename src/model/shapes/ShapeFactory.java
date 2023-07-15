@@ -22,17 +22,21 @@ public class ShapeFactory implements IShapeFactory {
     public IShape createTriangle(Point start, Point end, AppStateOpts stateOptions) {
 
 
-        // TODO fix this logic, doesn't draw in all directions sometimes just a line
+        /* CHECK
+            currently swaps the start and end for the x and y coordinates in the 3rd point
+            Draws shapes in every direction but not sure if this is how they are supposed to be drawn
+            The point could be swapped to end.x() and start.y()
+         */
         var xCoord = new int[3];
         var yCoord = new int[3];
 
         xCoord[0] = start.x();
         xCoord[1] = end.x();
-        xCoord[2] = Math.min(start.x(), end.x());
+        xCoord[2] = start.x();
 
         yCoord[0] = start.y();
         yCoord[1] = end.y();
-        yCoord[2] = Math.max(start.y(), end.y());
+        yCoord[2] = end.y();
 
         return new Triangle(xCoord, yCoord, stateOptions);
 

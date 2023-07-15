@@ -43,7 +43,6 @@ public class CreateShapeCommand implements ICommand, IUndoable {
                 applicationState.getActiveShapeShadingType(),
                 applicationState.getActiveMouseMode());
 
-        // TODO create shapes ellipse and triangle
         if (type == ShapeType.RECTANGLE) {
             createdShape = shapeFactory.createRectangle(start, end, stateOptions);
         } else if (type == ShapeType.TRIANGLE) {
