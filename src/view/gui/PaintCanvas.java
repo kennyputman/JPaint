@@ -28,14 +28,14 @@ public class PaintCanvas extends JComponent {
         for (IShape shape : this.shapeList.getShapeList()) {
             var type = shape.getOpts().activeShape();
             if (type == ShapeType.RECTANGLE) {
-                strategy = new DrawRectangle();
-                strategy.draw(shape, graphics2d);
+                strategy = new DrawRectangle(shape, graphics2d);
+                strategy.draw();
             } else if (type == ShapeType.TRIANGLE) {
-                strategy = new DrawTriangle();
-                strategy.draw(shape, graphics2d);
+                strategy = new DrawTriangle(shape, graphics2d);
+                strategy.draw();
             } else if (type == ShapeType.ELLIPSE) {
-                strategy = new DrawEllipse();
-                strategy.draw(shape, graphics2d);
+                strategy = new DrawEllipse(shape, graphics2d);
+                strategy.draw();
             } else {
                 throw new IllegalArgumentException("Invalid Shape Type");
             }
