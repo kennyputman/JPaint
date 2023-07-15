@@ -68,6 +68,14 @@ public class Main {
             Strategy pattern to dictate shape drawing to another thing
          */
 
+        /* NOTE
+            LECTURE NOTES
+
+            - Select functionality
+                - don't need to create outline for check in 2
+
+         */
+
         ShapeList shapeList = new ShapeList();
         //Will need to modify this
         PaintCanvas paintCanvas = new PaintCanvas(shapeList);

@@ -3,14 +3,15 @@ package model.shapes;
 import model.AppStateOpts;
 import model.interfaces.IShape;
 
-public class Rectangle implements IShape {
+public class Ellipse implements IShape {
+
     private final int x;
     private final int y;
     private final int height;
     private final int width;
     private final AppStateOpts appStateOpts;
 
-    public Rectangle(int x, int y, int height, int width, AppStateOpts appStateOpts) {
+    public Ellipse(int x, int y, int height, int width, AppStateOpts appStateOpts) {
         this.x = x;
         this.y = y;
         this.height = height;

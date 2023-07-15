@@ -47,9 +47,9 @@ public class CreateShapeCommand implements ICommand, IUndoable {
         if (type == ShapeType.RECTANGLE) {
             createdShape = shapeFactory.createRectangle(start, end, stateOptions);
         } else if (type == ShapeType.TRIANGLE) {
-            throw new UnsupportedOperationException();
+            createdShape = shapeFactory.createTriangle(start, end, stateOptions);
         } else if (type == ShapeType.ELLIPSE) {
-            throw new UnsupportedOperationException();
+            createdShape = shapeFactory.createEllipse(start, end, stateOptions);
         } else {
             throw new RuntimeException("Error: Shape type cannot be found");
         }

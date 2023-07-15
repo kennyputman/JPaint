@@ -5,5 +5,9 @@ import model.shapes.Point;
 
 
 public interface IShapeFactory {
-    public IShape createRectangle(Point startPoint, Point endPoint, AppStateOpts stateOpts);
+    IShape createRectangle(Point startPoint, Point endPoint, AppStateOpts stateOpts);
+
+    IShape createTriangle(Point start, Point end, AppStateOpts stateOpts);
+
+    IShape createEllipse(Point start, Point end, AppStateOpts stateOpts);
 }
