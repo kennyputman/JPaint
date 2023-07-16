@@ -1,12 +1,12 @@
 package view.handlers;
 
 import model.commands.CommandHistory;
+import model.commands.CreateMoveCommand;
 import model.commands.CreateSelectCommand;
 import model.commands.CreateShapeCommand;
 import model.persistence.ApplicationState;
 import model.persistence.ShapeList;
 import model.shapes.Point;
-import model.types.ShapeType;
 import view.gui.PaintCanvas;
 
 import java.awt.event.MouseAdapter;
@@ -59,10 +59,23 @@ public class ClickHandler extends MouseAdapter {
                 );
 
                 createSelectCommand.execute();
+                CommandHistory.add(createSelectCommand);
                 paintCanvas.repaint();
             }
             case MOVE -> {
-                System.out.println("move " + startPoint + "," + endPoint);
+                var previousCommand = CommandHistory.peek();
+
+                if(previousCommand instanceof CreateSelectCommand){
+                    CreateMoveCommand createMoveCommand = new CreateMoveCommand(
+                            startPoint,
+                            endPoint,
+                            ((CreateSelectCommand) previousCommand).getSelectedShapes()
+                    );
+                    createMoveCommand.execute();
+                    CommandHistory.add(createMoveCommand);
+                    paintCanvas.repaint();
+                }
+
             }
         }
 
