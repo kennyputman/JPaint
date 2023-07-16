@@ -6,7 +6,7 @@ import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
 import model.interfaces.IUndoable;
 import model.persistence.ApplicationState;
-import model.persistence.ShapeList;
+import model.persistence.ShapeStore;
 import model.shapes.Point;
 import model.shapes.ShapeFactory;
 import model.types.ShapeType;
@@ -16,7 +16,7 @@ public class CreateShapeCommand implements ICommand, IUndoable {
 
     private final IShapeFactory shapeFactory = new ShapeFactory();
     private final PaintCanvas paintCanvas;
-    private final ShapeList shapeList;
+    private final ShapeStore shapeStore;
     private IShape createdShape;
     private Point start;
     private Point end;
@@ -24,11 +24,11 @@ public class CreateShapeCommand implements ICommand, IUndoable {
 
 
     public CreateShapeCommand(
-            Point start, Point end, PaintCanvas paintCanvas, ShapeList shapeList, ApplicationState appState) {
+            Point start, Point end, PaintCanvas paintCanvas, ShapeStore shapeStore, ApplicationState appState) {
         this.start = start;
         this.end = end;
         this.paintCanvas = paintCanvas;
-        this.shapeList = shapeList;
+        this.shapeStore = shapeStore;
         this.applicationState = appState;
     }
 
@@ -53,21 +53,21 @@ public class CreateShapeCommand implements ICommand, IUndoable {
             throw new RuntimeException("Error: Shape type cannot be found");
         }
 
-        shapeList.add(createdShape);
+        shapeStore.addShape(createdShape);
         paintCanvas.repaint();
 
     }
 
     @Override
     public void redo() {
-        shapeList.add(createdShape);
+        shapeStore.addShape(createdShape);
         paintCanvas.repaint();
 
     }
 
     @Override
     public void undo() {
-        shapeList.remove(createdShape);
+        shapeStore.removeShape(createdShape);
         paintCanvas.repaint();
     }
 }

@@ -2,7 +2,7 @@ package main;
 
 import controller.JPaintController;
 import model.persistence.ApplicationState;
-import model.persistence.ShapeList;
+import model.persistence.ShapeStore;
 import view.gui.Gui;
 import view.gui.GuiWindow;
 import view.gui.PaintCanvas;
@@ -74,9 +74,9 @@ public class Main {
 
          */
 
-        ShapeList shapeList = new ShapeList();
+        ShapeStore shapeStore = new ShapeStore();
         //Will need to modify this
-        PaintCanvas paintCanvas = new PaintCanvas(shapeList);
+        PaintCanvas paintCanvas = new PaintCanvas(shapeStore);
 
         //Won't need to change this
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
@@ -86,6 +86,6 @@ public class Main {
 
         new JPaintController(uiModule, appState);
 
-        paintCanvas.addMouseListener(new ClickHandler(paintCanvas, shapeList, appState));
+        paintCanvas.addMouseListener(new ClickHandler(paintCanvas, shapeStore, appState));
     }
 }

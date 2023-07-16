@@ -5,7 +5,7 @@ import model.commands.CreateMoveCommand;
 import model.commands.CreateSelectCommand;
 import model.commands.CreateShapeCommand;
 import model.persistence.ApplicationState;
-import model.persistence.ShapeList;
+import model.persistence.ShapeStore;
 import model.shapes.Point;
 import view.gui.PaintCanvas;
 
@@ -17,12 +17,12 @@ public class ClickHandler extends MouseAdapter {
     PaintCanvas paintCanvas;
     private Point startPoint;
     private Point endPoint;
-    private ShapeList shapeList;
+    private ShapeStore shapeStore;
     private ApplicationState applicationState;
 
-    public ClickHandler(PaintCanvas p, ShapeList shapeList, ApplicationState applicationState) {
+    public ClickHandler(PaintCanvas p, ShapeStore shapeStore, ApplicationState applicationState) {
         this.paintCanvas = p;
-        this.shapeList = shapeList;
+        this.shapeStore = shapeStore;
         this.applicationState = applicationState;
     }
 
@@ -38,13 +38,13 @@ public class ClickHandler extends MouseAdapter {
 
         var state = applicationState.getActiveMouseMode();
 
-        switch(state){
+        switch (state) {
             case DRAW -> {
                 CreateShapeCommand createShapeCommand = new CreateShapeCommand(
                         startPoint,
                         endPoint,
                         paintCanvas,
-                        shapeList,
+                        shapeStore,
                         applicationState
                 );
 
@@ -55,31 +55,27 @@ public class ClickHandler extends MouseAdapter {
                 CreateSelectCommand createSelectCommand = new CreateSelectCommand(
                         startPoint,
                         endPoint,
-                        shapeList
+                        shapeStore
                 );
 
                 createSelectCommand.execute();
-                CommandHistory.add(createSelectCommand);
                 paintCanvas.repaint();
             }
             case MOVE -> {
-                var previousCommand = CommandHistory.peek();
 
-                if(previousCommand instanceof CreateSelectCommand){
-                    CreateMoveCommand createMoveCommand = new CreateMoveCommand(
-                            startPoint,
-                            endPoint,
-                            ((CreateSelectCommand) previousCommand).getSelectedShapes()
-                    );
-                    createMoveCommand.execute();
-                    CommandHistory.add(createMoveCommand);
-                    paintCanvas.repaint();
-                }
-
+                CreateMoveCommand createMoveCommand = new CreateMoveCommand(
+                        startPoint,
+                        endPoint,
+                        shapeStore
+                );
+                createMoveCommand.execute();
+                CommandHistory.add(createMoveCommand);
+                paintCanvas.repaint();
             }
+
         }
-
-
     }
 
+
 }
+

@@ -3,24 +3,24 @@ package model.commands;
 import model.interfaces.ICommand;
 import model.interfaces.IShape;
 import model.interfaces.IUndoable;
-import model.persistence.ShapeList;
+import model.persistence.ShapeStore;
 import model.shapes.Point;
 
 public class CreateMoveCommand implements IUndoable, ICommand {
 
     private Point startPoint;
     private Point endPoint;
-    private ShapeList selectedShapes;
+    private ShapeStore shapeStore;
 
-    public CreateMoveCommand(Point startPoint, Point endPoint,ShapeList selectedShapes) {
+    public CreateMoveCommand(Point startPoint, Point endPoint, ShapeStore shapeStore) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
-        this.selectedShapes = selectedShapes;
+        this.shapeStore = shapeStore;
     }
 
     @Override
     public void execute() {
-        for(IShape shape: selectedShapes.getShapeList()){
+        for(IShape shape: shapeStore.getSelectedShapes()){
             int xD = endPoint.x() - startPoint.x();
             int yD = endPoint.y() - startPoint.y();
             shape.move(xD,yD);
@@ -30,7 +30,7 @@ public class CreateMoveCommand implements IUndoable, ICommand {
 
     @Override
     public void redo() {
-        for(IShape shape: selectedShapes.getShapeList()){
+        for(IShape shape: shapeStore.getSelectedShapes()){
             int xD = endPoint.x() - startPoint.x();
             int yD = endPoint.y() - startPoint.y();
             shape.move(xD,yD);
@@ -39,7 +39,7 @@ public class CreateMoveCommand implements IUndoable, ICommand {
 
     @Override
     public void undo() {
-        for(IShape shape: selectedShapes.getShapeList()){
+        for(IShape shape: shapeStore.getSelectedShapes()){
             int xD = startPoint.x() - endPoint.x();
             int yD = startPoint.y() -endPoint.y();
             shape.move(xD,yD);
