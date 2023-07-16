@@ -1,6 +1,7 @@
 package view.handlers;
 
 import model.commands.CommandHistory;
+import model.commands.CreateSelectCommand;
 import model.commands.CreateShapeCommand;
 import model.persistence.ApplicationState;
 import model.persistence.ShapeList;
@@ -35,16 +36,37 @@ public class ClickHandler extends MouseAdapter {
 
         endPoint = new Point(e.getX(), e.getY());
 
-        CreateShapeCommand createShapeCommand = new CreateShapeCommand(
-                startPoint,
-                endPoint,
-                paintCanvas,
-                shapeList,
-                applicationState
-        );
+        var state = applicationState.getActiveMouseMode();
 
-        createShapeCommand.execute();
-        CommandHistory.add(createShapeCommand);
+        switch(state){
+            case DRAW -> {
+                CreateShapeCommand createShapeCommand = new CreateShapeCommand(
+                        startPoint,
+                        endPoint,
+                        paintCanvas,
+                        shapeList,
+                        applicationState
+                );
+
+                createShapeCommand.execute();
+                CommandHistory.add(createShapeCommand);
+            }
+            case SELECT -> {
+                CreateSelectCommand createSelectCommand = new CreateSelectCommand(
+                        startPoint,
+                        endPoint,
+                        shapeList
+                );
+
+                createSelectCommand.execute();
+                paintCanvas.repaint();
+            }
+            case MOVE -> {
+                System.out.println("move " + startPoint + "," + endPoint);
+            }
+        }
+
+
     }
 
 }

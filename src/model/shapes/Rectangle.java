@@ -4,8 +4,8 @@ import model.AppStateOpts;
 import model.interfaces.IShape;
 
 public class Rectangle implements IShape {
-    private final int x;
-    private final int y;
+    private int x;
+    private int y;
     private final int height;
     private final int width;
     private final AppStateOpts appStateOpts;
@@ -32,6 +32,12 @@ public class Rectangle implements IShape {
 
     public int getWidth() {
         return width;
+    }
+
+    @Override
+    public void move(int xD, int yD) {
+        this.x = x + xD;
+        this.y = y + yD;
     }
 
     public AppStateOpts getOpts(){

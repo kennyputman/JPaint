@@ -6,4 +6,14 @@ import model.types.ShapeType;
 public interface IShape {
 
     AppStateOpts getOpts();
+
+    public int getX();
+
+    public int getY();
+
+    public int getHeight();
+
+    public int getWidth();
+
+    public void move(int xD, int yD);
 }

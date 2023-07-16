@@ -3,6 +3,8 @@ package model.shapes;
 import model.AppStateOpts;
 import model.interfaces.IShape;
 
+import java.util.Arrays;
+
 public class Triangle implements IShape {
 
     int[] xCoordinates;
@@ -33,5 +35,42 @@ public class Triangle implements IShape {
     @Override
     public AppStateOpts getOpts(){
         return appStateOpts;
+    }
+
+    @Override
+    public int getX() {
+        return Arrays.stream(xCoordinates).min().orElseThrow();
+    }
+
+    @Override
+    public int getY() {
+        return Arrays.stream(yCoordinates).min().orElseThrow();
+    }
+
+    @Override
+    public int getHeight() {
+        var minY = Arrays.stream(yCoordinates).min().orElseThrow();
+        var maxY = Arrays.stream(yCoordinates).max().orElseThrow();
+
+        return maxY - minY;
+    }
+
+    @Override
+    public int getWidth() {
+        var minX = Arrays.stream(xCoordinates).min().orElseThrow();
+        var maxX = Arrays.stream(xCoordinates).max().orElseThrow();
+
+        return maxX - minX;
+    }
+
+    @Override
+    public void move(int xD, int yD) {
+        for (int x: xCoordinates) {
+            x = x + xD;
+        }
+
+        for (int y: yCoordinates) {
+            y = y + xD;
+        }
     }
 }
