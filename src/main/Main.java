@@ -66,13 +66,11 @@ public class Main {
             Strategy pattern to dictate shape drawing to another thing
          */
 
-        /* NOTE
-            LECTURE NOTES
+        // TODO select does not work on triangles
+        // TODO implement observer pattern for move
 
-            - Select functionality
-                - don't need to create outline for check in 2
 
-         */
+
 
         ShapeStore shapeStore = new ShapeStore();
         //Will need to modify this

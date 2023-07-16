@@ -65,12 +65,12 @@ public class Triangle implements IShape {
 
     @Override
     public void move(int xD, int yD) {
-        for (int x: xCoordinates) {
-            x = x + xD;
+        for (int i = 0; i < 3; i++) {
+            xCoordinates[i] = xCoordinates[i] + xD;
         }
 
-        for (int y: yCoordinates) {
-            y = y + xD;
+        for (int i = 0; i < 3; i++) {
+            yCoordinates[i] = yCoordinates[i] + yD;
         }
     }
 }
