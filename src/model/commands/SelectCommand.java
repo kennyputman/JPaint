@@ -6,7 +6,7 @@ import model.interfaces.IUndoable;
 import model.persistence.ShapeStore;
 import model.shapes.Point;
 
-public class CreateSelectCommand implements ICommand, IUndoable {
+public class SelectCommand implements ICommand, IUndoable {
 
     private Point startPoint;
     private Point endPoint;
@@ -16,7 +16,7 @@ public class CreateSelectCommand implements ICommand, IUndoable {
     private int height;
     private ShapeStore shapeStore;
 
-    public CreateSelectCommand(Point startPoint, Point endPoint, ShapeStore shapeStore) {
+    public SelectCommand(Point startPoint, Point endPoint, ShapeStore shapeStore) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.shapeStore = shapeStore;

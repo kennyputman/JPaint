@@ -1,8 +1,8 @@
 package view.handlers;
 
 import model.commands.CommandHistory;
-import model.commands.CreateMoveCommand;
-import model.commands.CreateSelectCommand;
+import model.commands.MoveCommand;
+import model.commands.SelectCommand;
 import model.commands.CreateShapeCommand;
 import model.persistence.ApplicationState;
 import model.persistence.ShapeStore;
@@ -52,7 +52,7 @@ public class ClickHandler extends MouseAdapter {
                 CommandHistory.add(createShapeCommand);
             }
             case SELECT -> {
-                CreateSelectCommand createSelectCommand = new CreateSelectCommand(
+                SelectCommand createSelectCommand = new SelectCommand(
                         startPoint,
                         endPoint,
                         shapeStore
@@ -63,7 +63,7 @@ public class ClickHandler extends MouseAdapter {
             }
             case MOVE -> {
 
-                CreateMoveCommand createMoveCommand = new CreateMoveCommand(
+                MoveCommand createMoveCommand = new MoveCommand(
                         startPoint,
                         endPoint,
                         shapeStore

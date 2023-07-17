@@ -6,13 +6,13 @@ import model.interfaces.IUndoable;
 import model.persistence.ShapeStore;
 import model.shapes.Point;
 
-public class CreateMoveCommand implements IUndoable, ICommand {
+public class MoveCommand implements IUndoable, ICommand {
 
     private Point startPoint;
     private Point endPoint;
     private ShapeStore shapeStore;
 
-    public CreateMoveCommand(Point startPoint, Point endPoint, ShapeStore shapeStore) {
+    public MoveCommand(Point startPoint, Point endPoint, ShapeStore shapeStore) {
         this.startPoint = startPoint;
         this.endPoint = endPoint;
         this.shapeStore = shapeStore;
