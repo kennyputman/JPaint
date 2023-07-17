@@ -2,11 +2,10 @@ package model.commands;
 
 import model.interfaces.ICommand;
 import model.interfaces.IShape;
-import model.interfaces.IUndoable;
 import model.persistence.ShapeStore;
 import model.shapes.Point;
 
-public class SelectCommand implements ICommand, IUndoable {
+public class SelectCommand implements ICommand {
 
     private Point startPoint;
     private Point endPoint;
@@ -42,15 +41,5 @@ public class SelectCommand implements ICommand, IUndoable {
                 x + width > shape.getX() &&
                 y < shape.getY() + shape.getHeight() &&
                 y + height > shape.getY();
-    }
-
-    @Override
-    public void redo() {
-        // FIXME should selectedShapes be a global static?
-    }
-
-    @Override
-    public void undo() {
-        // FIXME should selectedShapes be a global static?
     }
 }
