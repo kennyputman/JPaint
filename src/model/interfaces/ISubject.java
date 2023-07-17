@@ -1,7 +1,7 @@
 package model.interfaces;
 
 public interface ISubject {
-     void registerObserver(IMoveObserver shape);
+     void registerObserver(IObserver shape);
      void clearObservers();
      void moveObservers(int xD, int yD);
 }

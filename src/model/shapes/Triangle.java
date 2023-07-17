@@ -1,12 +1,12 @@
 package model.shapes;
 
 import model.AppStateOpts;
-import model.interfaces.IMoveObserver;
+import model.interfaces.IObserver;
 import model.interfaces.IShape;
 
 import java.util.Arrays;
 
-public class Triangle implements IShape, IMoveObserver {
+public class Triangle implements IShape, IObserver {
 
     int[] xCoordinates;
     int[] yCoordinates;
@@ -65,7 +65,7 @@ public class Triangle implements IShape, IMoveObserver {
     }
 
     @Override
-    public void move(int xD, int yD) {
+    public void Update(int xD, int yD) {
         for (int i = 0; i < 3; i++) {
             xCoordinates[i] = xCoordinates[i] + xD;
         }

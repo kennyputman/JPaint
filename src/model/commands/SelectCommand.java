@@ -1,7 +1,7 @@
 package model.commands;
 
 import model.interfaces.ICommand;
-import model.interfaces.IMoveObserver;
+import model.interfaces.IObserver;
 import model.interfaces.IShape;
 import model.persistence.ShapeStore;
 import model.shapes.Point;
@@ -27,7 +27,7 @@ public class SelectCommand implements ICommand {
         shapeStore.clearObservers();
         for (IShape shape : shapeStore.getShapeList()) {
             if (detectCollision(shape)) {
-                shapeStore.registerObserver((IMoveObserver) shape);
+                shapeStore.registerObserver((IObserver) shape);
             }
         }
     }

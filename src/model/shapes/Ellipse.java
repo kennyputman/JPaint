@@ -1,10 +1,10 @@
 package model.shapes;
 
 import model.AppStateOpts;
-import model.interfaces.IMoveObserver;
+import model.interfaces.IObserver;
 import model.interfaces.IShape;
 
-public class Ellipse implements IShape, IMoveObserver {
+public class Ellipse implements IShape, IObserver {
 
     private int x;
     private int y;
@@ -37,7 +37,7 @@ public class Ellipse implements IShape, IMoveObserver {
     }
 
     @Override
-    public void move(int xD, int yD) {
+    public void Update(int xD, int yD) {
         this.x = x + xD;
         this.y = y + yD;
     }

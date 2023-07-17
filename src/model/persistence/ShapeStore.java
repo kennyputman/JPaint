@@ -1,6 +1,6 @@
 package model.persistence;
 
-import model.interfaces.IMoveObserver;
+import model.interfaces.IObserver;
 import model.interfaces.IShape;
 import model.interfaces.ISubject;
 
@@ -11,7 +11,11 @@ public class ShapeStore implements ISubject {
 
     private final List<IShape> shapeList;
 
-    private final List<IMoveObserver> observers;
+    /*
+        The observers are currently held in a single list for a single type of even 'move'
+        If another event was added this would need to be updated to a Map<String, List<IObserver>>
+     */
+    private final List<IObserver> observers;
 
     public ShapeStore() {
         this.shapeList = new ArrayList<>();
@@ -32,7 +36,7 @@ public class ShapeStore implements ISubject {
     }
 
     @Override
-    public void registerObserver(IMoveObserver shape) {
+    public void registerObserver(IObserver shape) {
         this.observers.add(shape);
     }
 
@@ -43,8 +47,8 @@ public class ShapeStore implements ISubject {
 
     @Override
     public void moveObservers(int xD, int yD) {
-        for (IMoveObserver observer : observers) {
-            observer.move(xD, yD);
+        for (IObserver observer : observers) {
+            observer.Update(xD, yD);
         }
     }
 }
