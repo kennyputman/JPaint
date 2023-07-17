@@ -1,9 +1,10 @@
 package model.shapes;
 
 import model.AppStateOpts;
+import model.interfaces.IMoveable;
 import model.interfaces.IShape;
 
-public class Ellipse implements IShape {
+public class Ellipse implements IShape, IMoveable {
 
     private int x;
     private int y;

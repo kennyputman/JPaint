@@ -15,5 +15,5 @@ public interface IShape {
 
     public int getWidth();
 
-    public void move(int xD, int yD);
+
 }

@@ -20,29 +20,23 @@ public class MoveCommand implements IUndoable, ICommand {
 
     @Override
     public void execute() {
-        for(IShape shape: shapeStore.getSelectedShapes()){
-            int xD = endPoint.x() - startPoint.x();
-            int yD = endPoint.y() - startPoint.y();
-            shape.move(xD,yD);
-        }
+        int xD = endPoint.x() - startPoint.x();
+        int yD = endPoint.y() - startPoint.y();
+        shapeStore.moveSubscribers(xD, yD);
 
     }
 
     @Override
     public void redo() {
-        for(IShape shape: shapeStore.getSelectedShapes()){
             int xD = endPoint.x() - startPoint.x();
             int yD = endPoint.y() - startPoint.y();
-            shape.move(xD,yD);
-        }
+            shapeStore.moveSubscribers(xD, yD);
     }
 
     @Override
     public void undo() {
-        for(IShape shape: shapeStore.getSelectedShapes()){
             int xD = startPoint.x() - endPoint.x();
             int yD = startPoint.y() -endPoint.y();
-            shape.move(xD,yD);
-        }
+            shapeStore.moveSubscribers(xD, yD);
     }
 }

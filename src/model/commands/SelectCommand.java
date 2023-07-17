@@ -1,6 +1,7 @@
 package model.commands;
 
 import model.interfaces.ICommand;
+import model.interfaces.IMoveable;
 import model.interfaces.IShape;
 import model.persistence.ShapeStore;
 import model.shapes.Point;
@@ -27,10 +28,10 @@ public class SelectCommand implements ICommand {
 
     @Override
     public void execute() {
-        shapeStore.clearSelectedShapes();
+        shapeStore.clearSubscribers();
         for(IShape shape: shapeStore.getShapeList()){
             if(detectCollision(shape)){
-                shapeStore.addSelectedShape(shape);
+                shapeStore.subscribe((IMoveable) shape);
             }
         }
     }

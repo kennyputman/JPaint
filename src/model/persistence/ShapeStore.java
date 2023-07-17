@@ -1,28 +1,22 @@
 package model.persistence;
 
+import model.interfaces.IMoveable;
+import model.interfaces.IPublisher;
 import model.interfaces.IShape;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShapeStore {
+public class ShapeStore implements IPublisher {
 
     private final List<IShape> shapeList;
-    private final List<IShape> selectedShapes;
+    private List<IMoveable> subscribers;
 
     public ShapeStore() {
         this.shapeList = new ArrayList<>();
-        this.selectedShapes = new ArrayList<>();
+        this.subscribers = new ArrayList<>();
     }
 
-
-    public void addSelectedShape(IShape shape) {
-        this.selectedShapes.add(shape);
-    }
-
-    public void removeSelectedShape(IShape shape) {
-        selectedShapes.remove(shape);
-    }
 
     public void addShape(IShape shape) {
 
@@ -37,11 +31,26 @@ public class ShapeStore {
         return shapeList;
     }
 
-    public List<IShape> getSelectedShapes() {
-        return selectedShapes;
+
+    @Override
+    public void subscribe(IMoveable shape) {
+        this.subscribers.add(shape);
     }
 
-    public void clearSelectedShapes() {
-        selectedShapes.clear();
+    @Override
+    public void unsubscribe(IMoveable shape) {
+        this.subscribers.remove(shape);
+    }
+
+    @Override
+    public void clearSubscribers() {
+        this.subscribers.clear();
+    }
+
+    @Override
+    public void moveSubscribers(int xD, int yD) {
+        for (IMoveable sub: subscribers) {
+            sub.move(xD, yD);
+        }
     }
 }

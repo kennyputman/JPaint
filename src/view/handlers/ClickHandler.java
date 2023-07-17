@@ -1,9 +1,9 @@
 package view.handlers;
 
 import model.commands.CommandHistory;
+import model.commands.CreateShapeCommand;
 import model.commands.MoveCommand;
 import model.commands.SelectCommand;
-import model.commands.CreateShapeCommand;
 import model.persistence.ApplicationState;
 import model.persistence.ShapeStore;
 import model.shapes.Point;
@@ -75,7 +75,5 @@ public class ClickHandler extends MouseAdapter {
 
         }
     }
-
-
 }
 
