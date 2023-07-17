@@ -15,7 +15,6 @@ import view.gui.PaintCanvas;
 public class CreateShapeCommand implements ICommand, IUndoable {
 
     private final IShapeFactory shapeFactory = new ShapeFactory();
-    private final PaintCanvas paintCanvas;
     private final ShapeStore shapeStore;
     ApplicationState applicationState;
     private IShape createdShape;
@@ -27,7 +26,6 @@ public class CreateShapeCommand implements ICommand, IUndoable {
             Point start, Point end, PaintCanvas paintCanvas, ShapeStore shapeStore, ApplicationState appState) {
         this.start = start;
         this.end = end;
-        this.paintCanvas = paintCanvas;
         this.shapeStore = shapeStore;
         this.applicationState = appState;
     }
@@ -54,20 +52,14 @@ public class CreateShapeCommand implements ICommand, IUndoable {
         }
 
         shapeStore.addShape(createdShape);
-        paintCanvas.repaint();
-
     }
 
     @Override
     public void redo() {
         shapeStore.addShape(createdShape);
-        paintCanvas.repaint();
-
     }
 
     @Override
     public void undo() {
-        shapeStore.removeShape(createdShape);
-        paintCanvas.repaint();
-    }
+        shapeStore.removeShape(createdShape);}
 }
