@@ -1,10 +1,10 @@
 package model.shapes;
 
 import model.AppStateOpts;
-import model.interfaces.IMoveable;
+import model.interfaces.IMoveObserver;
 import model.interfaces.IShape;
 
-public class Rectangle implements IShape, IMoveable {
+public class Rectangle implements IShape, IMoveObserver {
     private int x;
     private int y;
     private final int height;

@@ -1,6 +1,6 @@
 package model.interfaces;
 
-public interface IMoveable {
+public interface IMoveObserver {
 
     public void move(int xD, int yD);
 }

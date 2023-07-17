@@ -17,10 +17,10 @@ public class CreateShapeCommand implements ICommand, IUndoable {
     private final IShapeFactory shapeFactory = new ShapeFactory();
     private final PaintCanvas paintCanvas;
     private final ShapeStore shapeStore;
-    private IShape createdShape;
-    private Point start;
-    private Point end;
     ApplicationState applicationState;
+    private IShape createdShape;
+    private final Point start;
+    private final Point end;
 
 
     public CreateShapeCommand(

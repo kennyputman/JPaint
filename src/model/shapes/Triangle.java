@@ -1,12 +1,12 @@
 package model.shapes;
 
 import model.AppStateOpts;
-import model.interfaces.IMoveable;
+import model.interfaces.IMoveObserver;
 import model.interfaces.IShape;
 
 import java.util.Arrays;
 
-public class Triangle implements IShape, IMoveable {
+public class Triangle implements IShape, IMoveObserver {
 
     int[] xCoordinates;
     int[] yCoordinates;
