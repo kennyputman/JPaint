@@ -20,7 +20,6 @@ public class MoveCommand implements IUndoable, ICommand {
 
     @Override
     public void execute() {
-
         shapeStore.moveObservers(xD, yD);
     }
 
