@@ -50,6 +50,7 @@ public class ClickHandler extends MouseAdapter {
 
                 createShapeCommand.execute();
                 CommandHistory.add(createShapeCommand);
+                paintCanvas.repaint();
             }
             case SELECT -> {
                 SelectCommand createSelectCommand = new SelectCommand(
@@ -72,7 +73,6 @@ public class ClickHandler extends MouseAdapter {
                 CommandHistory.add(createMoveCommand);
                 paintCanvas.repaint();
             }
-
         }
     }
 }
