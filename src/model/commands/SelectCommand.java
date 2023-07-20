@@ -5,6 +5,9 @@ import model.interfaces.IObserver;
 import model.interfaces.IShape;
 import model.persistence.ShapeStore;
 import model.shapes.Point;
+import model.types.ShapeSelection;
+
+import java.awt.*;
 
 public class SelectCommand implements ICommand {
 
@@ -26,8 +29,12 @@ public class SelectCommand implements ICommand {
     public void execute() {
         shapeStore.clearObservers();
         for (IShape shape : shapeStore.getShapeList()) {
+            // clears the current list of shapes so none or SELECTED
+            shape.setShapeSelection(ShapeSelection.NOT_SELECTED);
+
             if (detectCollision(shape)) {
                 shapeStore.registerObserver((IObserver) shape);
+                shape.setShapeSelection(ShapeSelection.SELECTED);
             }
         }
     }

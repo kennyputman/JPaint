@@ -5,7 +5,8 @@ SE 450 Summer 2023
 [Github link](https://github.com/kennyputman/JPaint)
 
 ## Missing Features and Known Bugs
-- Shape selection does not include a visible bounding box.
+- The outline for shape selection on the triangle does not have a functioning margin yet. Will implement a transform
+algorithm in sprint 3. 
 
 
 ## Design Patterns

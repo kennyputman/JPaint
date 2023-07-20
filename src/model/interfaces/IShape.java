@@ -1,18 +1,22 @@
 package model.interfaces;
 
 import model.AppStateOpts;
+import model.types.ShapeSelection;
 
 public interface IShape {
 
     AppStateOpts getOpts();
 
-    public int getX();
+    int getX();
 
-    public int getY();
+    int getY();
 
-    public int getHeight();
+    int getHeight();
 
-    public int getWidth();
+    int getWidth();
 
+    ShapeSelection getShapeSelection();
+
+    void setShapeSelection(ShapeSelection shapeSelection);
 
 }

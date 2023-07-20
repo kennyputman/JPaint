@@ -3,6 +3,7 @@ package model.shapes;
 import model.AppStateOpts;
 import model.interfaces.IObserver;
 import model.interfaces.IShape;
+import model.types.ShapeSelection;
 
 import java.util.Arrays;
 
@@ -11,13 +12,25 @@ public class Triangle implements IShape, IObserver {
     int[] xCoordinates;
     int[] yCoordinates;
     int n = 3;
+    private ShapeSelection shapeSelection;
 
     private final AppStateOpts appStateOpts;
+
+    @Override
+    public ShapeSelection getShapeSelection() {
+        return shapeSelection;
+    }
+
+    @Override
+    public void setShapeSelection(ShapeSelection shapeSelection) {
+        this.shapeSelection = shapeSelection;
+    }
 
     public Triangle(int[] xCoordinates, int[] yCoordinates, AppStateOpts appStateOpts) {
         this.xCoordinates = xCoordinates;
         this.yCoordinates = yCoordinates;
         this.appStateOpts = appStateOpts;
+        this.shapeSelection = ShapeSelection.NOT_SELECTED;
     }
 
 
