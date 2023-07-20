@@ -45,10 +45,10 @@ public class DrawRectangle implements DrawStrategy {
         graphics2d.setColor(opts.activeSecondaryColor().color());
         graphics2d.drawRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
 
-        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-        graphics2d.setStroke(stroke);
-        graphics2d.setColor(Color.BLACK);
-        graphics2d.drawRect(rect.getX() - 5, rect.getY() - 5, rect.getWidth() + 10, rect.getHeight() + 10);
+//        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
+//        graphics2d.setStroke(stroke);
+//        graphics2d.setColor(Color.BLACK);
+//        graphics2d.drawRect(rect.getX() - 5, rect.getY() - 5, rect.getWidth() + 10, rect.getHeight() + 10);
     }
 
     private void setOutlineOnly(Rectangle rect, AppStateOpts opts){
@@ -56,9 +56,9 @@ public class DrawRectangle implements DrawStrategy {
         graphics2d.setColor(opts.activePrimaryColor().color());
         graphics2d.drawRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
 
-        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-        graphics2d.setStroke(stroke);
-        graphics2d.setColor(Color.BLACK);
-        graphics2d.drawRect(rect.getX() - 5, rect.getY() - 5, rect.getWidth() + 10, rect.getHeight() + 10);
+//        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
+//        graphics2d.setStroke(stroke);
+//        graphics2d.setColor(Color.BLACK);
+//        graphics2d.drawRect(rect.getX() - 5, rect.getY() - 5, rect.getWidth() + 10, rect.getHeight() + 10);
     }
 }

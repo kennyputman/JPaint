@@ -4,9 +4,7 @@ import model.AppStateOpts;
 import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
 
-
 public class ShapeFactory implements IShapeFactory {
-
 
     @Override
     public IShape createRectangle(Point start, Point end, AppStateOpts appStateOpts) {
@@ -15,18 +13,11 @@ public class ShapeFactory implements IShapeFactory {
         var width = Math.abs(start.x() - end.x());
         var height = Math.abs(start.y() - end.y());
 
-        return new Rectangle(x,y,height,width, appStateOpts);
+        return new Rectangle(x, y, height, width, appStateOpts);
     }
 
     @Override
     public IShape createTriangle(Point start, Point end, AppStateOpts stateOptions) {
-
-
-        /* CHECK
-            currently swaps the start and end for the x and y coordinates in the 3rd point
-            Draws shapes in every direction but not sure if this is how they are supposed to be drawn
-            The point could be swapped to end.x() and start.y()
-         */
         var xCoord = new int[3];
         var yCoord = new int[3];
 
@@ -39,8 +30,6 @@ public class ShapeFactory implements IShapeFactory {
         yCoord[2] = end.y();
 
         return new Triangle(xCoord, yCoord, stateOptions);
-
-
     }
 
     @Override
@@ -50,8 +39,6 @@ public class ShapeFactory implements IShapeFactory {
         var width = Math.abs(start.x() - end.x());
         var height = Math.abs(start.y() - end.y());
 
-        return new Ellipse(x,y,height,width, stateOpts);
+        return new Ellipse(x, y, height, width, stateOpts);
     }
-
-
 }

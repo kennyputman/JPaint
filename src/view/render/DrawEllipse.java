@@ -46,10 +46,10 @@ public class DrawEllipse implements DrawStrategy {
         graphics2d.setColor(opts.activeSecondaryColor().color());
         graphics2d.drawOval(ellipse.getX(), ellipse.getY(), ellipse.getWidth(), ellipse.getHeight());
 
-        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-        graphics2d.setStroke(stroke);
-        graphics2d.setColor(Color.BLACK);
-        graphics2d.drawOval(ellipse.getX() - 5, ellipse.getY() - 5, ellipse.getWidth() + 10, ellipse.getHeight() + 10);
+//        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
+//        graphics2d.setStroke(stroke);
+//        graphics2d.setColor(Color.BLACK);
+//        graphics2d.drawOval(ellipse.getX() - 5, ellipse.getY() - 5, ellipse.getWidth() + 10, ellipse.getHeight() + 10);
     }
 
     private void setOutlineOnly(Ellipse ellipse, AppStateOpts opts){
@@ -57,9 +57,9 @@ public class DrawEllipse implements DrawStrategy {
         graphics2d.setColor(opts.activePrimaryColor().color());
         graphics2d.drawOval(ellipse.getX(), ellipse.getY(), ellipse.getWidth(), ellipse.getHeight());
 
-        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-        graphics2d.setStroke(stroke);
-        graphics2d.setColor(Color.BLACK);
-        graphics2d.drawOval(ellipse.getX() - 5, ellipse.getY() - 5, ellipse.getWidth() + 10, ellipse.getHeight() + 10);
+//        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
+//        graphics2d.setStroke(stroke);
+//        graphics2d.setColor(Color.BLACK);
+//        graphics2d.drawOval(ellipse.getX() - 5, ellipse.getY() - 5, ellipse.getWidth() + 10, ellipse.getHeight() + 10);
     }
 }

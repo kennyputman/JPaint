@@ -47,10 +47,10 @@ public class DrawTriangle implements DrawStrategy {
         graphics2d.setColor(opts.activeSecondaryColor().color());
         graphics2d.drawPolygon(tri.getXCoord(), tri.getYCoord(), tri.getN());
 
-        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-        graphics2d.setStroke(stroke);
-        graphics2d.setColor(Color.BLACK);
-        graphics2d.drawPolygon(tri.getXCoord(), tri.getYCoord(), tri.getN());
+//        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
+//        graphics2d.setStroke(stroke);
+//        graphics2d.setColor(Color.BLACK);
+//        graphics2d.drawPolygon(tri.getXCoord(), tri.getYCoord(), tri.getN());
     }
 
     private void setOutlineOnly(Triangle tri, AppStateOpts opts){
@@ -58,9 +58,9 @@ public class DrawTriangle implements DrawStrategy {
         graphics2d.setColor(opts.activePrimaryColor().color());
         graphics2d.drawPolygon(tri.getXCoord(), tri.getYCoord(), tri.getN());
 
-        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
-        graphics2d.setStroke(stroke);
-        graphics2d.setColor(Color.BLACK);
-        graphics2d.drawPolygon(tri.getXCoord(), tri.getYCoord(), tri.getN());
+//        Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
+//        graphics2d.setStroke(stroke);
+//        graphics2d.setColor(Color.BLACK);
+//        graphics2d.drawPolygon(tri.getXCoord(), tri.getYCoord(), tri.getN());
     }
 }
