@@ -1,17 +1,25 @@
 package controller;
 
 import model.commands.CommandHistory;
+import model.commands.CopyShapeCommand;
+import model.commands.PasteShapeCommand;
 import model.interfaces.IApplicationState;
+import model.persistence.ShapeStore;
 import view.EventName;
+import view.gui.PaintCanvas;
 import view.interfaces.IUiModule;
 
 public class JPaintController implements IJPaintController {
     private final IUiModule uiModule;
     private final IApplicationState applicationState;
+    private final ShapeStore shapeStore;
+    private final PaintCanvas paintCanvas;
 
-    public JPaintController(IUiModule uiModule, IApplicationState applicationState) {
+    public JPaintController(IUiModule uiModule, IApplicationState applicationState, ShapeStore shapeStore, PaintCanvas paintCanvas) {
         this.uiModule = uiModule;
         this.applicationState = applicationState;
+        this.shapeStore = shapeStore;
+        this.paintCanvas = paintCanvas;
         setupEvents();
     }
 
@@ -39,9 +47,19 @@ public class JPaintController implements IJPaintController {
     }
 
     private void copy() {
+
+        CopyShapeCommand command = new CopyShapeCommand(shapeStore);
+        command.execute();
+        paintCanvas.repaint();
     }
 
     private void paste() {
+
+        PasteShapeCommand command = new PasteShapeCommand(shapeStore);
+        CommandHistory.add(command);
+        command.execute();
+        paintCanvas.repaint();
+
     }
 
     private void delete() {

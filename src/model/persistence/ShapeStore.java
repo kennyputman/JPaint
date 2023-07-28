@@ -16,10 +16,12 @@ public class ShapeStore implements ISubject {
         If another event was added this would need to be updated to a Map<String, List<IObserver>>
      */
     private final List<IObserver> observers;
+    private final List<IShape> clipboard;
 
     public ShapeStore() {
         this.shapeList = new ArrayList<>();
         this.observers = new ArrayList<>();
+        this.clipboard = new ArrayList<>();
     }
 
     public void addShape(IShape shape) {
@@ -48,7 +50,17 @@ public class ShapeStore implements ISubject {
     @Override
     public void moveObservers(int xD, int yD) {
         for (IObserver observer : observers) {
-            observer.Update(xD, yD);
+            observer.update(xD, yD);
         }
+    }
+
+    public void copyShapes(){
+        for(IObserver observer: observers){
+            clipboard.add((IShape)observer);
+        }
+    }
+
+    public List<IShape> getClipboard() {
+        return clipboard;
     }
 }

@@ -15,8 +15,15 @@ public interface IShape {
 
     int getWidth();
 
+    void move(int xD, int yD);
+
     ShapeSelection getShapeSelection();
 
     void setShapeSelection(ShapeSelection shapeSelection);
+
+    /*
+        Implements a shallow copy of IShape
+     */
+    IShape copy();
 
 }

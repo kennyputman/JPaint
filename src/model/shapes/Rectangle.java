@@ -23,6 +23,11 @@ public class Rectangle implements IShape, IObserver {
         this.shapeSelection = shapeSelection;
     }
 
+    @Override
+    public IShape copy() {
+        return new Rectangle(x,y,height,width,appStateOpts);
+    }
+
     public Rectangle(int x, int y, int height, int width, AppStateOpts appStateOpts) {
         this.x = x;
         this.y = y;
@@ -49,7 +54,12 @@ public class Rectangle implements IShape, IObserver {
     }
 
     @Override
-    public void Update(int xD, int yD) {
+    public void move(int xD, int yD) {
+        update(xD, yD);
+    }
+
+    @Override
+    public void update(int xD, int yD) {
         this.x = x + xD;
         this.y = y + yD;
     }

@@ -40,6 +40,11 @@ public class Ellipse implements IShape, IObserver {
     }
 
     @Override
+    public void move(int xD, int yD) {
+        update(xD,yD);
+    }
+
+    @Override
     public ShapeSelection getShapeSelection() {
         return shapeSelection;
     }
@@ -50,7 +55,12 @@ public class Ellipse implements IShape, IObserver {
     }
 
     @Override
-    public void Update(int xD, int yD) {
+    public IShape copy() {
+        return new Ellipse(x,y, height,width,appStateOpts);
+    }
+
+    @Override
+    public void update(int xD, int yD) {
         this.x = x + xD;
         this.y = y + yD;
     }

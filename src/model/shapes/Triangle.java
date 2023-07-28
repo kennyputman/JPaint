@@ -9,12 +9,18 @@ import java.util.Arrays;
 
 public class Triangle implements IShape, IObserver {
 
+    private final AppStateOpts appStateOpts;
     int[] xCoordinates;
     int[] yCoordinates;
     int n = 3;
     private ShapeSelection shapeSelection;
 
-    private final AppStateOpts appStateOpts;
+    public Triangle(int[] xCoordinates, int[] yCoordinates, AppStateOpts appStateOpts) {
+        this.xCoordinates = xCoordinates;
+        this.yCoordinates = yCoordinates;
+        this.appStateOpts = appStateOpts;
+        this.shapeSelection = ShapeSelection.NOT_SELECTED;
+    }
 
     @Override
     public ShapeSelection getShapeSelection() {
@@ -26,28 +32,13 @@ public class Triangle implements IShape, IObserver {
         this.shapeSelection = shapeSelection;
     }
 
-    public Triangle(int[] xCoordinates, int[] yCoordinates, AppStateOpts appStateOpts) {
-        this.xCoordinates = xCoordinates;
-        this.yCoordinates = yCoordinates;
-        this.appStateOpts = appStateOpts;
-        this.shapeSelection = ShapeSelection.NOT_SELECTED;
-    }
-
-
-    public int[] getXCoord() {
-        return xCoordinates;
-    }
-
-    public int[] getYCoord() {
-        return yCoordinates;
-    }
-
-    public int getN() {
-        return n;
+    @Override
+    public IShape copy() {
+        return new Triangle(xCoordinates.clone(), yCoordinates.clone(), appStateOpts);
     }
 
     @Override
-    public AppStateOpts getOpts(){
+    public AppStateOpts getOpts() {
         return appStateOpts;
     }
 
@@ -78,7 +69,12 @@ public class Triangle implements IShape, IObserver {
     }
 
     @Override
-    public void Update(int xD, int yD) {
+    public void move(int xD, int yD) {
+        update(xD,yD);
+    }
+
+    @Override
+    public void update(int xD, int yD) {
         for (int i = 0; i < 3; i++) {
             xCoordinates[i] = xCoordinates[i] + xD;
         }
@@ -86,5 +82,17 @@ public class Triangle implements IShape, IObserver {
         for (int i = 0; i < 3; i++) {
             yCoordinates[i] = yCoordinates[i] + yD;
         }
+    }
+
+    public int[] getXCoord() {
+        return xCoordinates;
+    }
+
+    public int[] getYCoord() {
+        return yCoordinates;
+    }
+
+    public int getN() {
+        return n;
     }
 }
