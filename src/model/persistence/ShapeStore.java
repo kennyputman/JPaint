@@ -60,7 +60,12 @@ public class ShapeStore implements ISubject {
         }
     }
 
+    public List<IShape> getSelectedShapes(){
+        return observers.stream().map(s -> (IShape) s).toList();
+    }
+
+
     public List<IShape> getClipboard() {
-        return clipboard;
+        return this.clipboard;
     }
 }

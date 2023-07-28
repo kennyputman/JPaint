@@ -2,6 +2,7 @@ package controller;
 
 import model.commands.CommandHistory;
 import model.commands.CopyShapeCommand;
+import model.commands.DeleteShapeCommand;
 import model.commands.PasteShapeCommand;
 import model.interfaces.IApplicationState;
 import model.persistence.ShapeStore;
@@ -63,6 +64,10 @@ public class JPaintController implements IJPaintController {
     }
 
     private void delete() {
+        DeleteShapeCommand command = new DeleteShapeCommand(shapeStore);
+        CommandHistory.add(command);
+        command.execute();
+        paintCanvas.repaint();
     }
 
     private void group() {
