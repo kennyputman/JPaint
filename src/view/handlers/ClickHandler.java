@@ -1,5 +1,6 @@
 package view.handlers;
 
+import model.AppStateOpts;
 import model.commands.CommandHistory;
 import model.commands.CreateShapeCommand;
 import model.commands.MoveCommand;
@@ -40,12 +41,19 @@ public class ClickHandler extends MouseAdapter {
 
         switch (state) {
             case DRAW -> {
+
+                var appStateOpts = new AppStateOpts(
+                        applicationState.getActiveShapeType(),
+                        applicationState.getActivePrimaryColor(),
+                        applicationState.getActiveSecondaryColor(),
+                        applicationState.getActiveShapeShadingType()
+                );
+
                 CreateShapeCommand createShapeCommand = new CreateShapeCommand(
                         startPoint,
                         endPoint,
-                        paintCanvas,
                         shapeStore,
-                        applicationState
+                        appStateOpts
                 );
 
                 createShapeCommand.execute();

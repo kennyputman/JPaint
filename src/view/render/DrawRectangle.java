@@ -2,7 +2,6 @@ package view.render;
 
 import model.AppStateOpts;
 import model.interfaces.IShape;
-import model.shapes.Ellipse;
 import model.shapes.Rectangle;
 import model.types.ShapeSelection;
 import model.types.ShapeShadingType;

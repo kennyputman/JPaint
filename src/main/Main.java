@@ -13,6 +13,13 @@ import view.interfaces.IUiModule;
 public class Main {
     public static void main(String[] args) {
 
+        /*
+            TODO: Composite Pattern for grouping
+            TODO: Singleton for shapeStore
+            TODO: Fix outline for triangle
+            TODO: Add outline for selection
+         */
+
         ShapeStore shapeStore = new ShapeStore();
         PaintCanvas paintCanvas = new PaintCanvas(shapeStore);
 
