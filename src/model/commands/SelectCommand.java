@@ -7,7 +7,6 @@ import model.persistence.ShapeStore;
 import model.shapes.Point;
 import model.types.ShapeSelection;
 
-import java.awt.*;
 
 public class SelectCommand implements ICommand {
 
