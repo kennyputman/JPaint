@@ -7,23 +7,17 @@ import model.persistence.ShapeStore;
 import model.types.ShapeSelection;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-/*
-    TODO: Group Composite
-        -  implements all of the methods from IShape
- */
 public class Group implements IShape, IObserver {
 
-    private int x;
-    private int y;
     private final int height;
     private final int width;
     private final AppStateOpts appStateOpts;
-    private ShapeSelection shapeSelection;
-
     List<IShape> children = new ArrayList<>();
+    private int x;
+    private int y;
+    private ShapeSelection shapeSelection;
 
     public Group(int x, int y, int height, int width, AppStateOpts appStateOpts) {
         this.x = x;
@@ -34,8 +28,12 @@ public class Group implements IShape, IObserver {
         this.shapeSelection = ShapeSelection.NOT_SELECTED;
     }
 
-    public void addChildren(ShapeStore store){
+    public void addChildren(ShapeStore store) {
         children.addAll(store.getSelectedShapes());
+    }
+
+    public List<IShape> getChildren() {
+        return children;
     }
 
     @Override
@@ -69,7 +67,7 @@ public class Group implements IShape, IObserver {
         this.x = x + xD;
         this.y = y + yD;
 
-        for(IShape child: children){
+        for (IShape child : children) {
             child.move(xD, yD);
         }
     }
@@ -87,6 +85,6 @@ public class Group implements IShape, IObserver {
     // TODO need to fix copy()
     @Override
     public IShape copy() {
-        return new Rectangle(x,y,height,width,appStateOpts);
+        return new Rectangle(x, y, height, width, appStateOpts);
     }
 }

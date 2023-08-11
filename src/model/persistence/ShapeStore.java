@@ -3,6 +3,7 @@ package model.persistence;
 import model.interfaces.IObserver;
 import model.interfaces.IShape;
 import model.interfaces.ISubject;
+import model.shapes.Group;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,11 +26,16 @@ public class ShapeStore implements ISubject {
     }
 
     public void addShape(IShape shape) {
-
         shapeList.add(shape);
     }
 
     public void removeShape(IShape shape) {
+        // FIX: is this the best way to do this? Recursive c
+        if(shape instanceof Group group){
+            for(IShape child: group.getChildren()){
+                removeShape(child);
+            }
+        }
         shapeList.remove(shape);
     }
 

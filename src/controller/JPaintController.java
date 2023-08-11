@@ -68,23 +68,6 @@ public class JPaintController implements IJPaintController {
     }
 
 
-    /*
-        - usage of composite pattern for grouping
-        - group class should implement IShape
-        - group should implement IUndoable
-
-        TODO
-        - Group command implements IUndoable
-        - Need to update IShape to include a group
-            - This is probably an interface segregation issue
-            - need to seperate out my shape interfaces:
-                - IDrawable to handle options
-                - IGroupable or ICollection for nested shapes (getShapes)
-        - Add group to to to shapefactory
-        - Group shape with border outline set on min X and min Y
-        - Group can contain a Group Shape
-        - Move command should iterate through all IShapes in a group
-     */
     private void group() {
         GroupCommand command = new GroupCommand(shapeStore);
         CommandHistory.add(command);
@@ -94,10 +77,6 @@ public class JPaintController implements IJPaintController {
 
     }
 
-    /*
-        TODO
-            - need to pop or peek from group list of some variety and then remove it
-     */
     private void ungroup() {
         CommandHistory.undo();
     }
