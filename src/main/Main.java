@@ -16,8 +16,7 @@ public class Main {
         /*
             TODO: Composite Pattern for grouping
             TODO: Singleton for shapeStore
-            TODO: Fix outline for triangle
-            TODO: Add outline for selection
+            TODO: update vars for code readability
          */
 
         ShapeStore shapeStore = new ShapeStore();

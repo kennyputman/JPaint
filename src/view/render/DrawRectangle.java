@@ -2,7 +2,6 @@ package view.render;
 
 import model.AppStateOpts;
 import model.interfaces.IShape;
-import model.shapes.Rectangle;
 import model.types.ShapeSelection;
 import model.types.ShapeShadingType;
 import view.interfaces.DrawStrategy;
@@ -21,44 +20,43 @@ public class DrawRectangle implements DrawStrategy {
     @Override
     public void draw() {
         var opts = shape.getOpts();
-        var rect = (Rectangle) shape;
         var shadingType = opts.activeShapeShadingType();
 
         if(shadingType == ShapeShadingType.OUTLINE_AND_FILLED_IN){
-            setFill(rect, opts);
-           setOutline(rect, opts);
+            setFill(shape, opts);
+           setOutline(shape, opts);
         } else if(shadingType == ShapeShadingType.FILLED_IN){
-            setFill(rect, opts);
+            setFill(shape, opts);
         } else if (shadingType == ShapeShadingType.OUTLINE) {
-            setOutlineOnly(rect, opts);
+            setOutlineOnly(shape, opts);
         } else {
             throw new IllegalArgumentException("Invalid ShadeType");
         }
 
-        if(rect.getShapeSelection() == ShapeSelection.SELECTED){
-            setSelectionOutline(rect);
+        if(shape.getShapeSelection() == ShapeSelection.SELECTED){
+            setSelectionOutline(shape);
         }
     }
 
-    private void setFill(Rectangle rect, AppStateOpts opts){
+    private void setFill(IShape shape, AppStateOpts opts){
         graphics2d.setColor(opts.activePrimaryColor().color());
-        graphics2d.fillRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+        graphics2d.fillRect(shape.getX(), shape.getY(), shape.getWidth(), shape.getHeight());
     }
 
-    private void setOutline(Rectangle rect, AppStateOpts opts){
+    private void setOutline(IShape shape, AppStateOpts opts){
         graphics2d.setStroke(new BasicStroke(5));
         graphics2d.setColor(opts.activeSecondaryColor().color());
-        graphics2d.drawRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
+        graphics2d.drawRect(shape.getX(), shape.getY(), shape.getWidth(), shape.getHeight());
     }
 
-    private void setOutlineOnly(Rectangle rect, AppStateOpts opts){
+    private void setOutlineOnly(IShape rect, AppStateOpts opts){
         graphics2d.setStroke(new BasicStroke(5));
         graphics2d.setColor(opts.activePrimaryColor().color());
         graphics2d.drawRect(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
 
     }
 
-    private void setSelectionOutline(Rectangle rect){
+    private void setSelectionOutline(IShape rect){
         Stroke stroke = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1, new float[]{9}, 0);
         graphics2d.setStroke(stroke);
         graphics2d.setColor(Color.BLACK);

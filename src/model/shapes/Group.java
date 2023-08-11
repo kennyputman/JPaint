@@ -3,6 +3,7 @@ package model.shapes;
 import model.AppStateOpts;
 import model.interfaces.IObserver;
 import model.interfaces.IShape;
+import model.persistence.ShapeStore;
 import model.types.ShapeSelection;
 
 import java.util.ArrayList;
@@ -30,6 +31,10 @@ public class Group implements IShape, IObserver {
         this.width = width;
         this.appStateOpts = appStateOpts;
         this.shapeSelection = ShapeSelection.NOT_SELECTED;
+    }
+
+    public void addChildren(ShapeStore store){
+
     }
 
     @Override

@@ -6,6 +6,7 @@ import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
 import model.interfaces.IUndoable;
 import model.persistence.ShapeStore;
+import model.shapes.Group;
 import model.shapes.Point;
 import model.shapes.ShapeFactory;
 import model.types.ShapeColor;
@@ -21,7 +22,7 @@ public class GroupCommand implements ICommand, IUndoable {
 
     ShapeStore shapeStore;
     private final IShapeFactory shapeFactory = new ShapeFactory();
-    IShape groupOutline;
+    IShape group;
 
     public GroupCommand(ShapeStore shapeStore) {
         this.shapeStore = shapeStore;
@@ -39,18 +40,24 @@ public class GroupCommand implements ICommand, IUndoable {
         );
 
 
-        groupOutline = shapeFactory.createRectangle(points[0], points[1],appState);
-        shapeStore.addShape(groupOutline);
+        group = shapeFactory.createGroup(points[0], points[1],appState);
+
+        // Have to cast it to group in order to access class specific method outside IShape interface
+        if(group instanceof Group casted){
+            casted.addChildren(shapeStore);
+        }
+
+        shapeStore.addShape(group);
     }
 
     @Override
     public void redo() {
-        shapeStore.addShape(groupOutline);
+        shapeStore.addShape(group);
     }
 
     @Override
     public void undo() {
-        shapeStore.removeShape(groupOutline);}
+        shapeStore.removeShape(group);}
 
     private Point[] getStartEndPoints(){
         var selectedShapes = shapeStore.getSelectedShapes();

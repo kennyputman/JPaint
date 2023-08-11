@@ -17,6 +17,16 @@ public class ShapeFactory implements IShapeFactory {
     }
 
     @Override
+    public IShape createGroup(Point startPoint, Point endPoint, AppStateOpts appStateOpts) {
+        var x = Math.min(startPoint.x(), endPoint.x());
+        var y = Math.min(startPoint.y(), endPoint.y());
+        var width = Math.abs(startPoint.x() - endPoint.x());
+        var height = Math.abs(startPoint.y() - endPoint.y());
+
+        return new Group(x, y, height, width, appStateOpts);
+    }
+
+    @Override
     public IShape createTriangle(Point start, Point end, AppStateOpts stateOptions) {
         var xCoord = new int[3];
         var yCoord = new int[3];
