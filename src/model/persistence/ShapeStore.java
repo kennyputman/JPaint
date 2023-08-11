@@ -50,7 +50,7 @@ public class ShapeStore implements ISubject {
     @Override
     public void moveObservers(int xD, int yD) {
         for (IObserver observer : observers) {
-            observer.update(xD, yD);
+            observer.move(xD, yD);
         }
     }
 

@@ -7,6 +7,7 @@ import model.persistence.ShapeStore;
 import model.types.ShapeSelection;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -34,7 +35,7 @@ public class Group implements IShape, IObserver {
     }
 
     public void addChildren(ShapeStore store){
-
+        children.addAll(store.getSelectedShapes());
     }
 
     @Override
@@ -65,6 +66,9 @@ public class Group implements IShape, IObserver {
     @Override
     public void move(int xD, int yD) {
 
+        this.x = x + xD;
+        this.y = y + yD;
+
         for(IShape child: children){
             child.move(xD, yD);
         }
@@ -78,12 +82,6 @@ public class Group implements IShape, IObserver {
     @Override
     public void setShapeSelection(ShapeSelection shapeSelection) {
         this.shapeSelection = shapeSelection;
-    }
-
-    @Override
-    public void update(int xD, int yD) {
-        this.x = x + xD;
-        this.y = y + yD;
     }
 
     // TODO need to fix copy()

@@ -31,6 +31,7 @@ public class SelectCommand implements ICommand {
             // clears the current list of shapes so none or SELECTED
             shape.setShapeSelection(ShapeSelection.NOT_SELECTED);
 
+            // TODO: collision preference for group over child items
             if (detectCollision(shape)) {
                 shapeStore.registerObserver((IObserver) shape);
                 shape.setShapeSelection(ShapeSelection.SELECTED);

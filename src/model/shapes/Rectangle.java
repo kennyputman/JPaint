@@ -55,11 +55,6 @@ public class Rectangle implements IShape, IObserver {
 
     @Override
     public void move(int xD, int yD) {
-        update(xD, yD);
-    }
-
-    @Override
-    public void update(int xD, int yD) {
         this.x = x + xD;
         this.y = y + yD;
     }

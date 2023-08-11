@@ -2,5 +2,5 @@ package model.interfaces;
 
 public interface IObserver {
 
-    public void update(int xD, int yD);
+    void move(int xD, int yD);
 }

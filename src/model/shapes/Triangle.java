@@ -70,11 +70,6 @@ public class Triangle implements IShape, IObserver {
 
     @Override
     public void move(int xD, int yD) {
-        update(xD,yD);
-    }
-
-    @Override
-    public void update(int xD, int yD) {
         for (int i = 0; i < 3; i++) {
             xCoordinates[i] = xCoordinates[i] + xD;
         }
@@ -83,6 +78,7 @@ public class Triangle implements IShape, IObserver {
             yCoordinates[i] = yCoordinates[i] + yD;
         }
     }
+
 
     public int[] getXCoord() {
         return xCoordinates;
