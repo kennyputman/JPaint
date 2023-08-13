@@ -70,14 +70,13 @@ public class JPaintController implements IJPaintController {
 
     private void group() {
         GroupCommand command = new GroupCommand(shapeStore);
-        CommandHistory.add(command);
         command.execute();
         paintCanvas.repaint();
-
-
     }
 
     private void ungroup() {
-        CommandHistory.undo();
+        UngroupCommand command = new UngroupCommand(shapeStore);
+        command.execute();
+        paintCanvas.repaint();
     }
 }

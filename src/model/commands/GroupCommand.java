@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class GroupCommand implements ICommand, IUndoable {
+public class GroupCommand implements ICommand {
 
     ShapeStore shapeStore;
     private final IShapeFactory shapeFactory = new ShapeFactory();
@@ -41,15 +41,6 @@ public class GroupCommand implements ICommand, IUndoable {
         addShapeWithChildren();
     }
 
-    @Override
-    public void redo() {
-        addShapeWithChildren();
-    }
-
-    @Override
-    public void undo() {
-        shapeStore.removeShape(group);
-    }
 
     private void addShapeWithChildren(){
         // Have to cast it to group in order to access class specific method outside IShape interface
