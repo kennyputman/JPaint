@@ -5,7 +5,6 @@ import model.interfaces.ICommand;
 import model.interfaces.IShape;
 import model.interfaces.IShapeFactory;
 import model.interfaces.IUndoable;
-import model.persistence.ApplicationState;
 import model.persistence.ShapeStore;
 import model.shapes.Point;
 import model.shapes.ShapeFactory;
@@ -32,8 +31,6 @@ public class CreateShapeCommand implements ICommand, IUndoable {
     @Override
     public void execute() {
         var type = this.appStateOpts.activeShape();
-
-
 
         if (type == ShapeType.RECTANGLE) {
             createdShape = shapeFactory.createRectangle(start, end, appStateOpts);

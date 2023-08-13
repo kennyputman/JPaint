@@ -30,12 +30,7 @@ public class ShapeStore implements ISubject {
     }
 
     public void removeShape(IShape shape) {
-        // FIX: is this the best way to do this? Recursive c
-        if(shape instanceof Group group){
-            for(IShape child: group.getChildren()){
-                removeShape(child);
-            }
-        }
+
         shapeList.remove(shape);
     }
 
@@ -53,11 +48,18 @@ public class ShapeStore implements ISubject {
         this.observers.clear();
     }
 
+
+
     @Override
     public void moveObservers(int xD, int yD) {
         for (IObserver observer : observers) {
             observer.move(xD, yD);
         }
+    }
+
+    @Override
+    public void removeObserver(IObserver shape) {
+        observers.remove(shape);
     }
 
     public void copyShapes(){

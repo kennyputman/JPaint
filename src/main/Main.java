@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
         /*
-            FIX: Ungroup starts deleting things
+            FIX: Group within group doesn't move all at once. Doubles the inner group movement
 
             TODO: Singleton for shapeStore
             TODO: update vars for code readability

@@ -38,7 +38,20 @@ public class GroupCommand implements ICommand, IUndoable {
 
 
         group = shapeFactory.createGroup(points[0], points[1],appState);
+        addShapeWithChildren();
+    }
 
+    @Override
+    public void redo() {
+        addShapeWithChildren();
+    }
+
+    @Override
+    public void undo() {
+        shapeStore.removeShape(group);
+    }
+
+    private void addShapeWithChildren(){
         // Have to cast it to group in order to access class specific method outside IShape interface
         if(group instanceof Group casted){
             casted.addChildren(shapeStore);
@@ -54,15 +67,6 @@ public class GroupCommand implements ICommand, IUndoable {
 
         shapeStore.addShape(group);
     }
-
-    @Override
-    public void redo() {
-        shapeStore.addShape(group);
-    }
-
-    @Override
-    public void undo() {
-        shapeStore.removeShape(group);}
 
     private Point[] getStartEndPoints(){
         var selectedShapes = shapeStore.getSelectedShapes();

@@ -38,5 +38,9 @@ in the `ShapeStore`, triggering a notification to be sent to all observers to up
 Observers are registered from the select command . Anytime a select command is called to `execute`, 
 it clears the observers list, and repopulates it using an axis-aligned bounding box (AABB) collision algorithm. 
 
-
+#### Composite Pattern
+The composite pattern is implemented for groups. The `Group` class and all shapes `Rectangle`,
+`Triangle`, `Ellipse`, all implement the common interface to IShape. Any calls to methods in the 
+`IShape` interface, such as `Move` work for both the `Group` or any shape classes. There can 
+be any `IShape` within the `Group` including other groups. 
 

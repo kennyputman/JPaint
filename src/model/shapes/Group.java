@@ -82,7 +82,6 @@ public class Group implements IShape, IObserver {
         this.shapeSelection = shapeSelection;
     }
 
-    // TODO need to fix copy()
     @Override
     public IShape copy() {
         return new Rectangle(x, y, height, width, appStateOpts);
