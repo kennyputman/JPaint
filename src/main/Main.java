@@ -15,7 +15,6 @@ public class Main {
 
         /*
             FIX: Ungroup starts deleting things
-            FIX: Group button should automatically set selection and observers instead of requiring 2nd click
 
             TODO: Singleton for shapeStore
             TODO: update vars for code readability

@@ -1,10 +1,7 @@
 package model.commands;
 
 import model.AppStateOpts;
-import model.interfaces.ICommand;
-import model.interfaces.IShape;
-import model.interfaces.IShapeFactory;
-import model.interfaces.IUndoable;
+import model.interfaces.*;
 import model.persistence.ShapeStore;
 import model.shapes.Group;
 import model.shapes.Point;
@@ -46,6 +43,14 @@ public class GroupCommand implements ICommand, IUndoable {
         if(group instanceof Group casted){
             casted.addChildren(shapeStore);
         }
+
+        shapeStore.clearObservers();
+        for (IShape shape : shapeStore.getShapeList()) {
+            shape.setShapeSelection(ShapeSelection.NOT_SELECTED);
+        }
+        shapeStore.registerObserver((IObserver) group);
+        group.setShapeSelection(ShapeSelection.SELECTED);
+
 
         shapeStore.addShape(group);
     }

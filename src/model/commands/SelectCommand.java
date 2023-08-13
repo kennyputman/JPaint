@@ -4,6 +4,7 @@ import model.interfaces.ICommand;
 import model.interfaces.IObserver;
 import model.interfaces.IShape;
 import model.persistence.ShapeStore;
+import model.shapes.Group;
 import model.shapes.Point;
 import model.types.ShapeSelection;
 
@@ -31,8 +32,13 @@ public class SelectCommand implements ICommand {
             // clears the current list of shapes so none or SELECTED
             shape.setShapeSelection(ShapeSelection.NOT_SELECTED);
 
-            // TODO: collision preference for group over child items
             if (detectCollision(shape)) {
+                if(shape instanceof Group group){
+                    // FIX: May need to be recursive in some way
+                    for(IShape child: group.getChildren()){
+                        child.setShapeSelection(ShapeSelection.NOT_SELECTED);
+                    }
+                }
                 shapeStore.registerObserver((IObserver) shape);
                 shape.setShapeSelection(ShapeSelection.SELECTED);
             }
