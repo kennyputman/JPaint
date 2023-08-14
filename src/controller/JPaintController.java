@@ -77,6 +77,7 @@ public class JPaintController implements IJPaintController {
 
     private void ungroup() {
         UngroupCommand command = new UngroupCommand(shapeStore);
+        CommandHistory.add(command);
         command.execute();
         paintCanvas.repaint();
     }
