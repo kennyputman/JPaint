@@ -33,4 +33,8 @@ public class CommandHistory {
         }
         return result;
     }
+
+    public static IUndoable peek(){
+        return undoStack.peek();
+    }
 }

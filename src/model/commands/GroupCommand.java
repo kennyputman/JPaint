@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 
-public class GroupCommand implements ICommand {
+public class GroupCommand implements ICommand, IUndoable {
 
-    ShapeStore shapeStore;
+    private IShape group;
+    private final ShapeStore shapeStore;
     private final IShapeFactory shapeFactory = new ShapeFactory();
-    IShape group;
 
     public GroupCommand(ShapeStore shapeStore) {
         this.shapeStore = shapeStore;
@@ -29,6 +29,7 @@ public class GroupCommand implements ICommand {
     public void execute() {
         var points = getStartEndPoints();
 
+        // default options for bounding box on a group
         var appState = new AppStateOpts(
                 ShapeType.RECTANGLE,
                 ShapeColor.BLACK,
@@ -36,29 +37,52 @@ public class GroupCommand implements ICommand {
                 ShapeShadingType.OUTLINE
         );
 
-
         group = shapeFactory.createGroup(points[0], points[1],appState);
-        addShapeWithChildren();
-    }
-
-
-    private void addShapeWithChildren(){
         // Have to cast it to group in order to access class specific method outside IShape interface
         if(group instanceof Group casted){
             casted.addChildren(shapeStore);
         }
+        addGroupToShapeStore();
+    }
 
+    @Override
+    public void redo() {
+        addGroupToShapeStore();
+    }
+
+    @Override
+    public void undo() {
+        shapeStore.removeShape(group);
+
+        // reruns the selection command for the group members since selection is not addded to command history
+        var points = getStartEndPoints();
+        SelectCommand command = new SelectCommand(points[0], points[1], shapeStore);
+        command.execute();
+    }
+
+
+    /**
+     * - clears the selected shapes and observers from the shape store
+     * <br> - Sets the shape store selection and observer to the current grouping
+     * <br> - this will override any other observers and selections to only the group that is being created
+     */
+    private void addGroupToShapeStore(){
+
+        // clears the previous selections and observers from the shape store
+        shapeStore.clearSelections();
         shapeStore.clearObservers();
-        for (IShape shape : shapeStore.getShapeList()) {
-            shape.setShapeSelection(ShapeSelection.NOT_SELECTED);
-        }
-        shapeStore.registerObserver((IObserver) group);
-        group.setShapeSelection(ShapeSelection.SELECTED);
 
+        // sets the selected shapes and observers to only the group and not its children
+        group.setShapeSelection(ShapeSelection.SELECTED);
+        shapeStore.registerObserver((IObserver) group);
 
         shapeStore.addShape(group);
     }
 
+    /**
+     * Iterates through the selected shapes to find the minimum and maximum x,y positions
+     * @return     Point[start, end] - start point is (minX, minY) end point is (maxX, maxY)
+     */
     private Point[] getStartEndPoints(){
         var selectedShapes = shapeStore.getSelectedShapes();
 
@@ -86,4 +110,6 @@ public class GroupCommand implements ICommand {
 
         return new Point[]{start,end};
     }
+
+
 }

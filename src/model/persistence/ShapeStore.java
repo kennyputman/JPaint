@@ -4,6 +4,7 @@ import model.interfaces.IObserver;
 import model.interfaces.IShape;
 import model.interfaces.ISubject;
 import model.shapes.Group;
+import model.types.ShapeSelection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,11 @@ public class ShapeStore implements ISubject {
         this.observers.clear();
     }
 
-
+    public void clearSelections(){
+        for (IShape shape : shapeList) {
+            shape.setShapeSelection(ShapeSelection.NOT_SELECTED);
+        }
+    }
 
     @Override
     public void moveObservers(int xD, int yD) {
