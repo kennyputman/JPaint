@@ -13,6 +13,7 @@ import model.types.ShapeType;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 
 public class GroupCommand implements ICommand, IUndoable {
@@ -57,7 +58,7 @@ public class GroupCommand implements ICommand, IUndoable {
         shapeStore.removeShape(group);
 
         // reruns the selection command for the group members since selection is not addded to command history
-        var points = getStartEndPoints();
+        Point[] points = getStartEndPoints();
         SelectCommand command = new SelectCommand(points[0], points[1], shapeStore);
         command.execute();
     }
@@ -87,7 +88,7 @@ public class GroupCommand implements ICommand, IUndoable {
      * @return     Point[start, end] - start point is (minX, minY) end point is (maxX, maxY)
      */
     private Point[] getStartEndPoints(){
-        var selectedShapes = shapeStore.getSelectedShapes();
+        List<IShape> selectedShapes = shapeStore.getSelectedShapes();
 
         var xCoords = new ArrayList<Integer>();
         var yCoords = new ArrayList<Integer>();
@@ -103,10 +104,10 @@ public class GroupCommand implements ICommand, IUndoable {
             yCoords.add(yH);
         }
 
-        var xMin = Collections.min(xCoords) - 10;
-        var yMin = Collections.min(yCoords) - 10;
-        var xMax = Collections.max(xCoords) + 10;
-        var yMax = Collections.max(yCoords) +10;
+        int xMin = Collections.min(xCoords) - 10;
+        int yMin = Collections.min(yCoords) - 10;
+        int xMax = Collections.max(xCoords) + 10;
+        int yMax = Collections.max(yCoords) +10;
 
         Point start = new Point(xMin, yMin);
         Point end = new Point(xMax, yMax);

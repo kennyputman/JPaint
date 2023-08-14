@@ -30,7 +30,7 @@ public class CreateShapeCommand implements ICommand, IUndoable {
 
     @Override
     public void execute() {
-        var type = this.appStateOpts.activeShape();
+        ShapeType type = this.appStateOpts.activeShape();
 
         if (type == ShapeType.RECTANGLE) {
             createdShape = shapeFactory.createRectangle(start, end, appStateOpts);

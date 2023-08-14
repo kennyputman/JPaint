@@ -22,10 +22,10 @@ public class DrawTriangle implements DrawStrategy {
 
     @Override
     public void draw() {
-        var opts = shape.getOpts();
-        var tri = (Triangle) shape;
+        AppStateOpts opts = shape.getOpts();
+        Triangle tri = (Triangle) shape;
 
-        var shadingType = opts.activeShapeShadingType();
+        ShapeShadingType shadingType = opts.activeShapeShadingType();
 
         if (shadingType == ShapeShadingType.OUTLINE_AND_FILLED_IN) {
             setFill(tri, opts);

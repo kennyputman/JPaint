@@ -15,9 +15,9 @@ public class Main {
 
         /*
             FIX: Copy and paste for Groups
+            FIX: manage state on group children when deleting and such
 
             TODO: Singleton for shapeStore
-            TODO: update vars for code readability
          */
 
         ShapeStore shapeStore = new ShapeStore();

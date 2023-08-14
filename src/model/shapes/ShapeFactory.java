@@ -8,20 +8,20 @@ public class ShapeFactory implements IShapeFactory {
 
     @Override
     public IShape createRectangle(Point start, Point end, AppStateOpts appStateOpts) {
-        var x = Math.min(start.x(), end.x());
-        var y = Math.min(start.y(), end.y());
-        var width = Math.abs(start.x() - end.x());
-        var height = Math.abs(start.y() - end.y());
+        int x = Math.min(start.x(), end.x());
+        int y = Math.min(start.y(), end.y());
+        int width = Math.abs(start.x() - end.x());
+        int height = Math.abs(start.y() - end.y());
 
         return new Rectangle(x, y, height, width, appStateOpts);
     }
 
     @Override
     public IShape createGroup(Point startPoint, Point endPoint, AppStateOpts appStateOpts) {
-        var x = Math.min(startPoint.x(), endPoint.x());
-        var y = Math.min(startPoint.y(), endPoint.y());
-        var width = Math.abs(startPoint.x() - endPoint.x());
-        var height = Math.abs(startPoint.y() - endPoint.y());
+        int x = Math.min(startPoint.x(), endPoint.x());
+        int y = Math.min(startPoint.y(), endPoint.y());
+        int width = Math.abs(startPoint.x() - endPoint.x());
+        int height = Math.abs(startPoint.y() - endPoint.y());
 
         return new Group(x, y, height, width, appStateOpts);
     }
@@ -44,10 +44,10 @@ public class ShapeFactory implements IShapeFactory {
 
     @Override
     public IShape createEllipse(Point start, Point end, AppStateOpts stateOpts) {
-        var x = Math.min(start.x(), end.x());
-        var y = Math.min(start.y(), end.y());
-        var width = Math.abs(start.x() - end.x());
-        var height = Math.abs(start.y() - end.y());
+        int x = Math.min(start.x(), end.x());
+        int y = Math.min(start.y(), end.y());
+        int width = Math.abs(start.x() - end.x());
+        int height = Math.abs(start.y() - end.y());
 
         return new Ellipse(x, y, height, width, stateOpts);
     }
