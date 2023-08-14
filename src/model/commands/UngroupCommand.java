@@ -12,7 +12,7 @@ import java.util.List;
 public class UngroupCommand implements ICommand, IUndoable {
 
     private final ShapeStore shapeStore;
-    private final List<IShape> selectedGroups;
+    private final List<Group> selectedGroups;
 
     public UngroupCommand(ShapeStore shapeStore) {
         this.shapeStore = shapeStore;
@@ -26,6 +26,9 @@ public class UngroupCommand implements ICommand, IUndoable {
 
         for(IShape shape: selectedShapes){
             if(shape instanceof Group group){
+                for(IShape child: group.getChildren()){
+                    child.setParent(null);
+                }
                 shapeStore.removeShape(group);
                 selectedGroups.add(group);
             }
@@ -34,14 +37,20 @@ public class UngroupCommand implements ICommand, IUndoable {
 
     @Override
     public void redo() {
-        for(IShape group: selectedGroups){
+        for(Group group: selectedGroups){
+            for(IShape child: group.getChildren()){
+                child.setParent(null);
+            }
             shapeStore.removeShape(group);
         }
     }
 
     @Override
     public void undo() {
-        for(IShape group: selectedGroups){
+        for(Group group: selectedGroups){
+            for(IShape child: group.getChildren()){
+                child.setParent(group);
+            }
             shapeStore.addShape(group);
         }
     }

@@ -14,6 +14,7 @@ public class Triangle implements IShape, IObserver {
     int[] yCoordinates;
     int n = 3;
     private ShapeSelection shapeSelection;
+    private IShape parent = null;
 
     public Triangle(int[] xCoordinates, int[] yCoordinates, AppStateOpts appStateOpts) {
         this.xCoordinates = xCoordinates;
@@ -35,6 +36,16 @@ public class Triangle implements IShape, IObserver {
     @Override
     public IShape copy() {
         return new Triangle(xCoordinates.clone(), yCoordinates.clone(), appStateOpts);
+    }
+
+    @Override
+    public IShape getParent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(IShape parent) {
+        this.parent = parent;
     }
 
     @Override

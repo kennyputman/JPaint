@@ -18,6 +18,7 @@ public class Group implements IShape, IObserver {
     private int x;
     private int y;
     private ShapeSelection shapeSelection;
+    private IShape parent = null;
 
     public Group(int x, int y, int height, int width, AppStateOpts appStateOpts) {
         this.x = x;
@@ -30,6 +31,12 @@ public class Group implements IShape, IObserver {
 
     public void addChildren(ShapeStore store) {
         children.addAll(store.getSelectedShapes());
+
+        for (IShape child : children) {
+            if (child.getParent() == null) {
+                child.setParent(this);
+            }
+        }
     }
 
     public List<IShape> getChildren() {
@@ -68,7 +75,9 @@ public class Group implements IShape, IObserver {
         this.y = y + yD;
 
         for (IShape child : children) {
-            child.move(xD, yD);
+            if (child.getParent() == this) {
+                child.move(xD, yD);
+            }
         }
     }
 
@@ -85,5 +94,15 @@ public class Group implements IShape, IObserver {
     @Override
     public IShape copy() {
         return new Rectangle(x, y, height, width, appStateOpts);
+    }
+
+    @Override
+    public IShape getParent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(IShape parent) {
+        this.parent = parent;
     }
 }

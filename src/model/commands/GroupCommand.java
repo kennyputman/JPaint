@@ -39,9 +39,11 @@ public class GroupCommand implements ICommand, IUndoable {
 
         group = shapeFactory.createGroup(points[0], points[1],appState);
         // Have to cast it to group in order to access class specific method outside IShape interface
+
         if(group instanceof Group casted){
             casted.addChildren(shapeStore);
         }
+
         addGroupToShapeStore();
     }
 
@@ -71,6 +73,7 @@ public class GroupCommand implements ICommand, IUndoable {
         // clears the previous selections and observers from the shape store
         shapeStore.clearSelections();
         shapeStore.clearObservers();
+
 
         // sets the selected shapes and observers to only the group and not its children
         group.setShapeSelection(ShapeSelection.SELECTED);

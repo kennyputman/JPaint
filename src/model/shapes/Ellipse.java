@@ -13,6 +13,7 @@ public class Ellipse implements IShape, IObserver {
     private final int width;
     private final AppStateOpts appStateOpts;
     private ShapeSelection shapeSelection;
+    private IShape parent = null;
 
     public Ellipse(int x, int y, int height, int width, AppStateOpts appStateOpts) {
         this.x = x;
@@ -21,6 +22,7 @@ public class Ellipse implements IShape, IObserver {
         this.width = width;
         this.appStateOpts = appStateOpts;
         this.shapeSelection = ShapeSelection.NOT_SELECTED;
+
     }
 
     public int getX() {
@@ -58,6 +60,16 @@ public class Ellipse implements IShape, IObserver {
     @Override
     public IShape copy() {
         return new Ellipse(x,y, height,width,appStateOpts);
+    }
+
+    @Override
+    public IShape getParent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(IShape parent) {
+        this.parent = parent;
     }
 
     public AppStateOpts getOpts(){

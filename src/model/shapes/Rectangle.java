@@ -12,6 +12,7 @@ public class Rectangle implements IShape, IObserver {
     private final int width;
     private final AppStateOpts appStateOpts;
     private ShapeSelection shapeSelection;
+    private IShape parent = null;
 
     @Override
     public ShapeSelection getShapeSelection() {
@@ -26,6 +27,16 @@ public class Rectangle implements IShape, IObserver {
     @Override
     public IShape copy() {
         return new Rectangle(x,y,height,width,appStateOpts);
+    }
+
+    @Override
+    public IShape getParent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(IShape parent) {
+        this.parent = parent;
     }
 
     public Rectangle(int x, int y, int height, int width, AppStateOpts appStateOpts) {

@@ -26,4 +26,7 @@ public interface IShape {
      */
     IShape copy();
 
+    IShape getParent();
+    void setParent(IShape parent);
+
 }
