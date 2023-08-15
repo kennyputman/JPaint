@@ -93,7 +93,18 @@ public class Group implements IShape, IObserver {
 
     @Override
     public IShape copy() {
-        return new Rectangle(x, y, height, width, appStateOpts);
+
+        var copy = new Group(x,y,height, width, appStateOpts);
+
+        List<IShape> childrenCopies = new ArrayList<>();
+
+        for(IShape child: children){
+            IShape childCopy = child.copy();
+            childrenCopies.add(childCopy);
+        }
+
+        copy.children.addAll(childrenCopies);
+        return copy;
     }
 
     @Override

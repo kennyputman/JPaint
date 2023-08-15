@@ -5,6 +5,7 @@ import model.interfaces.IShape;
 import model.interfaces.IUndoable;
 import model.persistence.ShapeStore;
 import model.shapes.Ellipse;
+import model.shapes.Group;
 import model.shapes.Rectangle;
 import model.shapes.Triangle;
 
@@ -38,7 +39,9 @@ public class PasteShapeCommand implements ICommand, IUndoable {
                 copy = rect.copy();
             } else if (shape instanceof Ellipse ellipse) {
                 copy = ellipse.copy();
-            } else {
+            } else if (shape instanceof Group group){
+                copy = group.copy();
+            }else {
                 throw new InstanceNotFoundException("Shape not found");
             }
 
@@ -51,8 +54,8 @@ public class PasteShapeCommand implements ICommand, IUndoable {
 
     @Override
     public void execute() {
-        for (IShape observer : pastedShapes) {
-            shapeStore.addShape(observer);
+        for (IShape shape : pastedShapes) {
+            shapeStore.addShape(shape);
         }
 
     }
