@@ -18,7 +18,7 @@ import java.util.List;
 
 public class GroupCommand implements ICommand, IUndoable {
 
-    private IShape group;
+    private Group group;
     private final ShapeStore shapeStore;
     private final IShapeFactory shapeFactory = new ShapeFactory();
 
@@ -38,12 +38,10 @@ public class GroupCommand implements ICommand, IUndoable {
                 ShapeShadingType.OUTLINE
         );
 
-        group = shapeFactory.createGroup(points[0], points[1],appState);
+        group = (Group) shapeFactory.createGroup(points[0], points[1],appState);
         // Have to cast it to group in order to access class specific method outside IShape interface
 
-        if(group instanceof Group casted){
-            casted.addChildren(shapeStore);
-        }
+        group.addChildren(shapeStore);
 
         addGroupToShapeStore();
     }
@@ -56,6 +54,11 @@ public class GroupCommand implements ICommand, IUndoable {
     @Override
     public void undo() {
         shapeStore.removeShape(group);
+
+        for(IShape child: group.getChildren()){
+            shapeStore.addShape(child);
+            child.setParent(null);
+        }
 
         // reruns the selection command for the group members since selection is not addded to command history
         Point[] points = getStartEndPoints();
