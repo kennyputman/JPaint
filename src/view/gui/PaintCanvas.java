@@ -5,6 +5,7 @@ import model.persistence.ShapeStore;
 import model.types.ShapeType;
 import view.interfaces.DrawStrategy;
 import view.render.DrawEllipse;
+import view.render.DrawGroup;
 import view.render.DrawRectangle;
 import view.render.DrawTriangle;
 
@@ -36,7 +37,10 @@ public class PaintCanvas extends JComponent {
             } else if (type == ShapeType.ELLIPSE) {
                 strategy = new DrawEllipse(shape, graphics2d);
                 strategy.draw();
-            } else {
+            } else if (type == ShapeType.GROUP) {
+                strategy = new DrawGroup(shape, graphics2d);
+                strategy.draw();
+            }else {
                 throw new IllegalArgumentException("Invalid Shape Type");
             }
         }

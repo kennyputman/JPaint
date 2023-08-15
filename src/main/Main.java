@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
         /*
-            FIX: Copy and paste for Groups
+            FIX: Paste for groups causes select to fail
             FIX: manage state on group children when deleting and such
 
             TODO: Singleton for shapeStore

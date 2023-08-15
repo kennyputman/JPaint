@@ -32,6 +32,13 @@ public class Group implements IShape, IObserver {
     public void addChildren(ShapeStore store) {
         children.addAll(store.getSelectedShapes());
 
+        // All drawing and rendering of children is handled at the group level.
+        // This removes the children from the store and resets their selected tag
+        for(IShape child: children){
+            store.removeShape(child);
+            child.setShapeSelection(ShapeSelection.NOT_SELECTED);
+        }
+
         for (IShape child : children) {
             if (child.getParent() == null) {
                 child.setParent(this);
@@ -100,6 +107,7 @@ public class Group implements IShape, IObserver {
 
         for(IShape child: children){
             IShape childCopy = child.copy();
+            childCopy.setParent(copy);
             childrenCopies.add(childCopy);
         }
 

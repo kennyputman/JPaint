@@ -32,7 +32,7 @@ public class GroupCommand implements ICommand, IUndoable {
 
         // default options for bounding box on a group
         var appState = new AppStateOpts(
-                ShapeType.RECTANGLE,
+                ShapeType.GROUP,
                 ShapeColor.BLACK,
                 ShapeColor.BLACK,
                 ShapeShadingType.OUTLINE
