@@ -15,7 +15,10 @@ public class Main {
 
         /*
             FIX: Paste should update pasted item to be selected instead of previous
-            FIX: undo group removes everything
+            FIX: Redo ungroup doesn't work
+            FIX: Moving nested groups still has issues
+            FIX: multiple copy and pastes don't seem to clear copy paste selection
+            FIX: remove box around group when not selected
 
             TODO: Singleton for shapeStore
          */
