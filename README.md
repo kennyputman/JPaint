@@ -5,6 +5,7 @@ SE 450 Summer 2023
 [Github link](https://github.com/kennyputman/JPaint)
 
 ## Missing Features and Known Bugs
+No known missing features or bugs.
 
 ## Design Patterns
 The project uses the following design patterns
@@ -12,8 +13,8 @@ The project uses the following design patterns
 #### Abstract Factory Pattern
 The creation of shapes is handled by an abstract factory. 
 There is an interface `IShapeFactory` which defines methods for creating `IShape` objects.
-This interface is implemented by the `ShapeFactory`. The `Rectangle`, `Ellipse`, and `Triangle` shapes
-currently implement the `IShape` interface. 
+This interface is implemented by the `ShapeFactory`. The `Rectangle`, `Ellipse`, `Triangle`, and 
+`Group` shapes currently implement the `IShape` interface. 
 
 #### Command Pattern
 The command pattern is used for the creation of shapes, move commands, and select commands. 
@@ -41,3 +42,8 @@ The composite pattern is implemented for groups. The `Group` class and all shape
 `IShape` interface, such as `Move` work for both the `Group` or any shape classes. There can 
 be any `IShape` within the `Group` including other groups. 
 
+#### Singleton Pattern
+The singleton pattern in implemented for the `ShapeStore` class. The `ShapeStore` class handles
+persistance and management for all shapes including clipboard for copy/paste and the observers
+for implementing move functionality. The singleton is implemented with a public accessor `getInstance`
+and a private constructor that ensures only a single instance will be created in the application.

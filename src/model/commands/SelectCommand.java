@@ -15,10 +15,9 @@ public class SelectCommand implements ICommand {
     private final int y;
     private final int width;
     private final int height;
-    private final ShapeStore shapeStore;
+    private final ShapeStore shapeStore = ShapeStore.getInstance();
 
-    public SelectCommand(Point startPoint, Point endPoint, ShapeStore shapeStore) {
-        this.shapeStore = shapeStore;
+    public SelectCommand(Point startPoint, Point endPoint) {
         this.x = Math.min(startPoint.x(), endPoint.x());
         this.y = Math.min(startPoint.y(), endPoint.y());
         this.width = Math.abs(startPoint.x() - endPoint.x());

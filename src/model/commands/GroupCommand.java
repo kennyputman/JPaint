@@ -19,12 +19,10 @@ import java.util.List;
 public class GroupCommand implements ICommand, IUndoable {
 
     private Group group;
-    private final ShapeStore shapeStore;
     private final IShapeFactory shapeFactory = new ShapeFactory();
+    private final ShapeStore shapeStore = ShapeStore.getInstance();
 
-    public GroupCommand(ShapeStore shapeStore) {
-        this.shapeStore = shapeStore;
-    }
+    public GroupCommand() {}
 
     @Override
     public void execute() {
@@ -62,7 +60,7 @@ public class GroupCommand implements ICommand, IUndoable {
 
         // reruns the selection command for the group members since selection is not addded to command history
         Point[] points = getStartEndPoints();
-        SelectCommand command = new SelectCommand(points[0], points[1], shapeStore);
+        SelectCommand command = new SelectCommand(points[0], points[1]);
         command.execute();
     }
 

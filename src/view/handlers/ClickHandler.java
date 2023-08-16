@@ -18,12 +18,10 @@ public class ClickHandler extends MouseAdapter {
     PaintCanvas paintCanvas;
     private Point startPoint;
     private Point endPoint;
-    private ShapeStore shapeStore;
     private ApplicationState applicationState;
 
-    public ClickHandler(PaintCanvas p, ShapeStore shapeStore, ApplicationState applicationState) {
+    public ClickHandler(PaintCanvas p, ApplicationState applicationState) {
         this.paintCanvas = p;
-        this.shapeStore = shapeStore;
         this.applicationState = applicationState;
     }
 
@@ -52,7 +50,6 @@ public class ClickHandler extends MouseAdapter {
                 CreateShapeCommand createShapeCommand = new CreateShapeCommand(
                         startPoint,
                         endPoint,
-                        shapeStore,
                         appStateOpts
                 );
 
@@ -63,8 +60,7 @@ public class ClickHandler extends MouseAdapter {
             case SELECT -> {
                 SelectCommand createSelectCommand = new SelectCommand(
                         startPoint,
-                        endPoint,
-                        shapeStore
+                        endPoint
                 );
 
                 createSelectCommand.execute();
@@ -74,8 +70,7 @@ public class ClickHandler extends MouseAdapter {
 
                 MoveCommand createMoveCommand = new MoveCommand(
                         startPoint,
-                        endPoint,
-                        shapeStore
+                        endPoint
                 );
                 createMoveCommand.execute();
                 CommandHistory.add(createMoveCommand);

@@ -13,7 +13,7 @@ import model.types.ShapeType;
 public class CreateShapeCommand implements ICommand, IUndoable {
 
     private final IShapeFactory shapeFactory = new ShapeFactory();
-    private final ShapeStore shapeStore;
+    private final ShapeStore shapeStore = ShapeStore.getInstance();
     AppStateOpts appStateOpts;
     private IShape createdShape;
     private final Point start;
@@ -21,10 +21,9 @@ public class CreateShapeCommand implements ICommand, IUndoable {
 
 
     public CreateShapeCommand(
-            Point start, Point end, ShapeStore shapeStore, AppStateOpts appState) {
+            Point start, Point end, AppStateOpts appState) {
         this.start = start;
         this.end = end;
-        this.shapeStore = shapeStore;
         this.appStateOpts = appState;
     }
 

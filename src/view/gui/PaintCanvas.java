@@ -14,12 +14,10 @@ import java.awt.*;
 
 public class PaintCanvas extends JComponent {
 
-    private ShapeStore shapeStore;
+    private final ShapeStore shapeStore = ShapeStore.getInstance();
     private DrawStrategy strategy;
 
-    public PaintCanvas(ShapeStore shapeStore) {
-        this.shapeStore = shapeStore;
-    }
+    public PaintCanvas() {}
 
     @Override
     public void paint(Graphics g) {

@@ -3,13 +3,14 @@ package model.persistence;
 import model.interfaces.IObserver;
 import model.interfaces.IShape;
 import model.interfaces.ISubject;
-import model.shapes.Group;
 import model.types.ShapeSelection;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeStore implements ISubject {
+
+    private static ShapeStore instance;
 
     private final List<IShape> shapeList;
 
@@ -20,10 +21,18 @@ public class ShapeStore implements ISubject {
     private final List<IObserver> observers;
     private final List<IShape> clipboard;
 
-    public ShapeStore() {
+    private ShapeStore() {
         this.shapeList = new ArrayList<>();
         this.observers = new ArrayList<>();
         this.clipboard = new ArrayList<>();
+    }
+
+    public static ShapeStore getInstance(){
+        if(instance == null){
+            instance = new ShapeStore();
+        }
+
+        return instance;
     }
 
     public void addShape(IShape shape) {

@@ -10,12 +10,11 @@ public class MoveCommand implements IUndoable, ICommand {
     private final int xD;
     private final int yD;
 
-    private final ShapeStore shapeStore;
+    private final ShapeStore shapeStore = ShapeStore.getInstance();
 
-    public MoveCommand(Point startPoint, Point endPoint, ShapeStore shapeStore) {
+    public MoveCommand(Point startPoint, Point endPoint) {
         this.xD = endPoint.x() - startPoint.x();
         this.yD = endPoint.y() - startPoint.y();
-        this.shapeStore = shapeStore;
     }
 
     @Override

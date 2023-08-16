@@ -17,16 +17,15 @@ public class Main {
             TODO: Singleton for shapeStore
          */
 
-        ShapeStore shapeStore = new ShapeStore();
-        PaintCanvas paintCanvas = new PaintCanvas(shapeStore);
+        PaintCanvas paintCanvas = new PaintCanvas();
 
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);
         IUiModule uiModule = new Gui(guiWindow);
 
         ApplicationState appState = new ApplicationState(uiModule);
 
-        new JPaintController(uiModule, appState, shapeStore, paintCanvas);
+        new JPaintController(uiModule, appState, paintCanvas);
 
-        paintCanvas.addMouseListener(new ClickHandler(paintCanvas, shapeStore, appState));
+        paintCanvas.addMouseListener(new ClickHandler(paintCanvas, appState));
     }
 }

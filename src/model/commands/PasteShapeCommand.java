@@ -17,11 +17,10 @@ import java.util.List;
 
 public class PasteShapeCommand implements ICommand, IUndoable {
 
-    private final ShapeStore shapeStore;
     private final List<IShape> pastedShapes;
+    private final ShapeStore shapeStore = ShapeStore.getInstance();
 
-    public PasteShapeCommand(ShapeStore shapeStore) {
-        this.shapeStore = shapeStore;
+    public PasteShapeCommand() {
         pastedShapes = new ArrayList<>();
 
         try {

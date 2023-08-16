@@ -2,7 +2,6 @@ package controller;
 
 import model.commands.*;
 import model.interfaces.IApplicationState;
-import model.persistence.ShapeStore;
 import view.EventName;
 import view.gui.PaintCanvas;
 import view.interfaces.IUiModule;
@@ -10,13 +9,11 @@ import view.interfaces.IUiModule;
 public class JPaintController implements IJPaintController {
     private final IUiModule uiModule;
     private final IApplicationState applicationState;
-    private final ShapeStore shapeStore;
     private final PaintCanvas paintCanvas;
 
-    public JPaintController(IUiModule uiModule, IApplicationState applicationState, ShapeStore shapeStore, PaintCanvas paintCanvas) {
+    public JPaintController(IUiModule uiModule, IApplicationState applicationState, PaintCanvas paintCanvas) {
         this.uiModule = uiModule;
         this.applicationState = applicationState;
-        this.shapeStore = shapeStore;
         this.paintCanvas = paintCanvas;
         setupEvents();
     }
@@ -46,14 +43,14 @@ public class JPaintController implements IJPaintController {
 
     private void copy() {
 
-        CopyShapeCommand command = new CopyShapeCommand(shapeStore);
+        CopyShapeCommand command = new CopyShapeCommand();
         command.execute();
         paintCanvas.repaint();
     }
 
     private void paste() {
 
-        PasteShapeCommand command = new PasteShapeCommand(shapeStore);
+        PasteShapeCommand command = new PasteShapeCommand();
         CommandHistory.add(command);
         command.execute();
         paintCanvas.repaint();
@@ -61,7 +58,7 @@ public class JPaintController implements IJPaintController {
     }
 
     private void delete() {
-        DeleteShapeCommand command = new DeleteShapeCommand(shapeStore);
+        DeleteShapeCommand command = new DeleteShapeCommand();
         CommandHistory.add(command);
         command.execute();
         paintCanvas.repaint();
@@ -69,14 +66,14 @@ public class JPaintController implements IJPaintController {
 
 
     private void group() {
-        GroupCommand command = new GroupCommand(shapeStore);
+        GroupCommand command = new GroupCommand();
         CommandHistory.add(command);
         command.execute();
         paintCanvas.repaint();
     }
 
     private void ungroup() {
-        UngroupCommand command = new UngroupCommand(shapeStore);
+        UngroupCommand command = new UngroupCommand();
         CommandHistory.add(command);
         command.execute();
         paintCanvas.repaint();

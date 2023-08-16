@@ -5,10 +5,9 @@ import model.persistence.ShapeStore;
 
 public class CopyShapeCommand implements ICommand {
 
-    private ShapeStore shapeStore;
+    private final ShapeStore shapeStore = ShapeStore.getInstance();
 
-    public CopyShapeCommand(ShapeStore shapeStore) {
-        this.shapeStore = shapeStore;
+    public CopyShapeCommand() {
     }
 
     @Override

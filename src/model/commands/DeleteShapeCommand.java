@@ -10,11 +10,10 @@ import java.util.List;
 
 public class DeleteShapeCommand implements ICommand, IUndoable {
 
-    private final ShapeStore shapeStore;
     private final List<IShape> shapes;
+    private final ShapeStore shapeStore = ShapeStore.getInstance();
 
-    public DeleteShapeCommand(ShapeStore shapeStore) {
-        this.shapeStore = shapeStore;
+    public DeleteShapeCommand() {
         this.shapes = new ArrayList<>(shapeStore.getSelectedShapes());
     }
 

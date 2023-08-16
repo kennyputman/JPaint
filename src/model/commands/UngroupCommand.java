@@ -11,11 +11,10 @@ import java.util.List;
 
 public class UngroupCommand implements ICommand, IUndoable {
 
-    private final ShapeStore shapeStore;
     private final List<Group> selectedGroups;
+    private final ShapeStore shapeStore = ShapeStore.getInstance();
 
-    public UngroupCommand(ShapeStore shapeStore) {
-        this.shapeStore = shapeStore;
+    public UngroupCommand() {
         this.selectedGroups = new ArrayList<>();
     }
 
