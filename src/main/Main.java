@@ -13,10 +13,6 @@ import view.interfaces.IUiModule;
 public class Main {
     public static void main(String[] args) {
 
-        /*
-            TODO: Singleton for shapeStore
-         */
-
         PaintCanvas paintCanvas = new PaintCanvas();
 
         IGuiWindow guiWindow = new GuiWindow(paintCanvas);

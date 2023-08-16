@@ -18,11 +18,12 @@ import java.util.List;
 
 public class GroupCommand implements ICommand, IUndoable {
 
-    private Group group;
     private final IShapeFactory shapeFactory = new ShapeFactory();
     private final ShapeStore shapeStore = ShapeStore.getInstance();
+    private Group group;
 
-    public GroupCommand() {}
+    public GroupCommand() {
+    }
 
     @Override
     public void execute() {
@@ -36,7 +37,7 @@ public class GroupCommand implements ICommand, IUndoable {
                 ShapeShadingType.OUTLINE
         );
 
-        group = (Group) shapeFactory.createGroup(points[0], points[1],appState);
+        group = (Group) shapeFactory.createGroup(points[0], points[1], appState);
         // Have to cast it to group in order to access class specific method outside IShape interface
 
         group.addChildren(shapeStore);
@@ -53,7 +54,7 @@ public class GroupCommand implements ICommand, IUndoable {
     public void undo() {
         shapeStore.removeShape(group);
 
-        for(IShape child: group.getChildren()){
+        for (IShape child : group.getChildren()) {
             shapeStore.addShape(child);
             child.setParent(null);
         }
@@ -70,7 +71,7 @@ public class GroupCommand implements ICommand, IUndoable {
      * <br> - Sets the shape store selection and observer to the current grouping
      * <br> - this will override any other observers and selections to only the group that is being created
      */
-    private void addGroupToShapeStore(){
+    private void addGroupToShapeStore() {
 
         // clears the previous selections and observers from the shape store
         shapeStore.clearSelections();
@@ -86,9 +87,10 @@ public class GroupCommand implements ICommand, IUndoable {
 
     /**
      * Iterates through the selected shapes to find the minimum and maximum x,y positions
-     * @return     Point[start, end] - start point is (minX, minY) end point is (maxX, maxY)
+     *
+     * @return Point[start, end] - start point is (minX, minY) end point is (maxX, maxY)
      */
-    private Point[] getStartEndPoints(){
+    private Point[] getStartEndPoints() {
         List<IShape> selectedShapes = shapeStore.getSelectedShapes();
 
         var xCoords = new ArrayList<Integer>();
@@ -108,12 +110,12 @@ public class GroupCommand implements ICommand, IUndoable {
         int xMin = Collections.min(xCoords) - 10;
         int yMin = Collections.min(yCoords) - 10;
         int xMax = Collections.max(xCoords) + 10;
-        int yMax = Collections.max(yCoords) +10;
+        int yMax = Collections.max(yCoords) + 10;
 
         Point start = new Point(xMin, yMin);
         Point end = new Point(xMax, yMax);
 
-        return new Point[]{start,end};
+        return new Point[]{start, end};
     }
 
 

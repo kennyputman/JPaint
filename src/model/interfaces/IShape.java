@@ -21,12 +21,10 @@ public interface IShape {
 
     void setShapeSelection(ShapeSelection shapeSelection);
 
-    /*
-        Implements a shallow copy of IShape
-     */
     IShape copy();
 
     IShape getParent();
+
     void setParent(IShape parent);
 
 }

@@ -27,8 +27,8 @@ public class ShapeStore implements ISubject {
         this.clipboard = new ArrayList<>();
     }
 
-    public static ShapeStore getInstance(){
-        if(instance == null){
+    public static ShapeStore getInstance() {
+        if (instance == null) {
             instance = new ShapeStore();
         }
 
@@ -58,7 +58,7 @@ public class ShapeStore implements ISubject {
         this.observers.clear();
     }
 
-    public void clearSelections(){
+    public void clearSelections() {
         for (IShape shape : shapeList) {
             shape.setShapeSelection(ShapeSelection.NOT_SELECTED);
         }
@@ -76,13 +76,13 @@ public class ShapeStore implements ISubject {
         observers.remove(shape);
     }
 
-    public void copyShapes(){
-        for(IObserver observer: observers){
-            clipboard.add((IShape)observer);
+    public void copyShapes() {
+        for (IObserver observer : observers) {
+            clipboard.add((IShape) observer);
         }
     }
 
-    public List<IShape> getSelectedShapes(){
+    public List<IShape> getSelectedShapes() {
         return observers.stream().map(s -> (IShape) s).toList();
     }
 
@@ -91,7 +91,7 @@ public class ShapeStore implements ISubject {
         return this.clipboard;
     }
 
-    public void clearClipboard(){
+    public void clearClipboard() {
         this.clipboard.clear();
     }
 }

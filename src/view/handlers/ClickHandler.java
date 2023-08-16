@@ -6,7 +6,6 @@ import model.commands.CreateShapeCommand;
 import model.commands.MoveCommand;
 import model.commands.SelectCommand;
 import model.persistence.ApplicationState;
-import model.persistence.ShapeStore;
 import model.shapes.Point;
 import view.gui.PaintCanvas;
 

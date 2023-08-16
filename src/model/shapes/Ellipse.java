@@ -7,11 +7,11 @@ import model.types.ShapeSelection;
 
 public class Ellipse implements IShape, IObserver {
 
-    private int x;
-    private int y;
     private final int height;
     private final int width;
     private final AppStateOpts appStateOpts;
+    private int x;
+    private int y;
     private ShapeSelection shapeSelection;
     private IShape parent = null;
 
@@ -59,7 +59,7 @@ public class Ellipse implements IShape, IObserver {
 
     @Override
     public IShape copy() {
-        return new Ellipse(x,y, height,width,appStateOpts);
+        return new Ellipse(x, y, height, width, appStateOpts);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Ellipse implements IShape, IObserver {
         this.parent = parent;
     }
 
-    public AppStateOpts getOpts(){
+    public AppStateOpts getOpts() {
         return appStateOpts;
     }
 }

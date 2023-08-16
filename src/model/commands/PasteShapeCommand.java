@@ -44,9 +44,9 @@ public class PasteShapeCommand implements ICommand, IUndoable {
                 copy = rect.copy();
             } else if (shape instanceof Ellipse ellipse) {
                 copy = ellipse.copy();
-            } else if (shape instanceof Group group){
+            } else if (shape instanceof Group group) {
                 copy = group.copy();
-            }else {
+            } else {
                 throw new InstanceNotFoundException("Shape not found");
             }
 

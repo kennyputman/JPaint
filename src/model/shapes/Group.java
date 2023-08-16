@@ -34,7 +34,7 @@ public class Group implements IShape, IObserver {
 
         // All drawing and rendering of children is handled at the group level.
         // This removes the children from the store and resets their selected tag
-        for(IShape child: children){
+        for (IShape child : children) {
             store.removeShape(child);
             child.setShapeSelection(ShapeSelection.NOT_SELECTED);
         }
@@ -105,11 +105,11 @@ public class Group implements IShape, IObserver {
     @Override
     public IShape copy() {
 
-        var copy = new Group(x,y,height, width, appStateOpts);
+        var copy = new Group(x, y, height, width, appStateOpts);
 
         List<IShape> childrenCopies = new ArrayList<>();
 
-        for(IShape child: children){
+        for (IShape child : children) {
             IShape childCopy = child.copy();
             childCopy.setParent(copy);
             childrenCopies.add(childCopy);

@@ -32,9 +32,8 @@ public class SelectCommand implements ICommand {
             shape.setShapeSelection(ShapeSelection.NOT_SELECTED);
 
             if (detectCollision(shape)) {
-                if(shape instanceof Group group){
-                    // FIX: There seems to be an error when moving groups within groups here
-                    for(IShape child: group.getChildren()){
+                if (shape instanceof Group group) {
+                    for (IShape child : group.getChildren()) {
                         child.setShapeSelection(ShapeSelection.NOT_SELECTED);
                     }
                 }

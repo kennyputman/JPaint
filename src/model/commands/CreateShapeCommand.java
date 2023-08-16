@@ -14,10 +14,10 @@ public class CreateShapeCommand implements ICommand, IUndoable {
 
     private final IShapeFactory shapeFactory = new ShapeFactory();
     private final ShapeStore shapeStore = ShapeStore.getInstance();
-    AppStateOpts appStateOpts;
-    private IShape createdShape;
     private final Point start;
     private final Point end;
+    AppStateOpts appStateOpts;
+    private IShape createdShape;
 
 
     public CreateShapeCommand(
@@ -51,5 +51,6 @@ public class CreateShapeCommand implements ICommand, IUndoable {
 
     @Override
     public void undo() {
-        shapeStore.removeShape(createdShape);}
+        shapeStore.removeShape(createdShape);
+    }
 }

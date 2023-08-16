@@ -6,13 +6,22 @@ import model.interfaces.IShape;
 import model.types.ShapeSelection;
 
 public class Rectangle implements IShape, IObserver {
-    private int x;
-    private int y;
     private final int height;
     private final int width;
     private final AppStateOpts appStateOpts;
+    private int x;
+    private int y;
     private ShapeSelection shapeSelection;
     private IShape parent = null;
+
+    public Rectangle(int x, int y, int height, int width, AppStateOpts appStateOpts) {
+        this.x = x;
+        this.y = y;
+        this.height = height;
+        this.width = width;
+        this.appStateOpts = appStateOpts;
+        this.shapeSelection = ShapeSelection.NOT_SELECTED;
+    }
 
     @Override
     public ShapeSelection getShapeSelection() {
@@ -26,7 +35,7 @@ public class Rectangle implements IShape, IObserver {
 
     @Override
     public IShape copy() {
-        return new Rectangle(x,y,height,width,appStateOpts);
+        return new Rectangle(x, y, height, width, appStateOpts);
     }
 
     @Override
@@ -37,15 +46,6 @@ public class Rectangle implements IShape, IObserver {
     @Override
     public void setParent(IShape parent) {
         this.parent = parent;
-    }
-
-    public Rectangle(int x, int y, int height, int width, AppStateOpts appStateOpts) {
-        this.x = x;
-        this.y = y;
-        this.height = height;
-        this.width = width;
-        this.appStateOpts = appStateOpts;
-        this.shapeSelection = ShapeSelection.NOT_SELECTED;
     }
 
     public int getX() {
@@ -70,7 +70,7 @@ public class Rectangle implements IShape, IObserver {
         this.y = y + yD;
     }
 
-    public AppStateOpts getOpts(){
+    public AppStateOpts getOpts() {
         return appStateOpts;
     }
 }

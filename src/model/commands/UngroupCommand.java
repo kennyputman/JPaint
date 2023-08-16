@@ -23,9 +23,9 @@ public class UngroupCommand implements ICommand, IUndoable {
     public void execute() {
         var selectedShapes = shapeStore.getSelectedShapes();
 
-        for(IShape shape: selectedShapes){
-            if(shape instanceof Group group){
-                for(IShape child: group.getChildren()){
+        for (IShape shape : selectedShapes) {
+            if (shape instanceof Group group) {
+                for (IShape child : group.getChildren()) {
                     child.setParent(null);
                     shapeStore.addShape(child);
                 }
@@ -37,8 +37,8 @@ public class UngroupCommand implements ICommand, IUndoable {
 
     @Override
     public void redo() {
-        for(Group group: selectedGroups){
-            for(IShape child: group.getChildren()){
+        for (Group group : selectedGroups) {
+            for (IShape child : group.getChildren()) {
                 child.setParent(null);
                 shapeStore.addShape(child);
             }
@@ -48,8 +48,8 @@ public class UngroupCommand implements ICommand, IUndoable {
 
     @Override
     public void undo() {
-        for(Group group: selectedGroups){
-            for(IShape child: group.getChildren()){
+        for (Group group : selectedGroups) {
+            for (IShape child : group.getChildren()) {
                 child.setParent(group);
                 shapeStore.removeShape(child);
             }
