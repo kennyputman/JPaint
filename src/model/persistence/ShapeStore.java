@@ -81,4 +81,8 @@ public class ShapeStore implements ISubject {
     public List<IShape> getClipboard() {
         return this.clipboard;
     }
+
+    public void clearClipboard(){
+        this.clipboard.clear();
+    }
 }

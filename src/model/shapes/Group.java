@@ -96,6 +96,10 @@ public class Group implements IShape, IObserver {
     @Override
     public void setShapeSelection(ShapeSelection shapeSelection) {
         this.shapeSelection = shapeSelection;
+
+        for (IShape child : children) {
+            child.setShapeSelection(ShapeSelection.NOT_SELECTED);
+        }
     }
 
     @Override

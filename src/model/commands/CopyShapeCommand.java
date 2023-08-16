@@ -13,6 +13,7 @@ public class CopyShapeCommand implements ICommand {
 
     @Override
     public void execute() {
+        this.shapeStore.clearClipboard();
         this.shapeStore.copyShapes();
     }
 }

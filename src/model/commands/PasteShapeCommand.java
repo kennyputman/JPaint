@@ -1,6 +1,7 @@
 package model.commands;
 
 import model.interfaces.ICommand;
+import model.interfaces.IObserver;
 import model.interfaces.IShape;
 import model.interfaces.IUndoable;
 import model.persistence.ShapeStore;
@@ -8,6 +9,7 @@ import model.shapes.Ellipse;
 import model.shapes.Group;
 import model.shapes.Rectangle;
 import model.shapes.Triangle;
+import model.types.ShapeSelection;
 
 import javax.management.InstanceNotFoundException;
 import java.util.ArrayList;
@@ -31,6 +33,10 @@ public class PasteShapeCommand implements ICommand, IUndoable {
     }
 
     private void initializePastedShapes() throws InstanceNotFoundException {
+
+        shapeStore.clearObservers();
+        shapeStore.clearSelections();
+
         for (IShape shape : shapeStore.getClipboard()) {
             IShape copy;
             if (shape instanceof Triangle triangle) {
@@ -45,8 +51,10 @@ public class PasteShapeCommand implements ICommand, IUndoable {
                 throw new InstanceNotFoundException("Shape not found");
             }
 
+            copy.setShapeSelection(ShapeSelection.SELECTED);
+            shapeStore.registerObserver((IObserver) copy);
 
-            // TODO this only moves based on original subsequent copies overlap
+            // Note this only moves the first copy. Successive copies will overlap
             copy.move(15, 15);
             pastedShapes.add(copy);
         }
