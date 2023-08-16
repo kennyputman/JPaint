@@ -24,8 +24,6 @@ public class DrawGroup implements DrawStrategy {
     public void draw() {
         var opts = shape.getOpts();
 
-        setOutlineOnly(shape, opts );
-
         if(shape.getShapeSelection() == ShapeSelection.SELECTED){
             setSelectionOutline(shape);
         }
@@ -48,14 +46,6 @@ public class DrawGroup implements DrawStrategy {
                 throw new IllegalArgumentException("Invalid Shape Type");
             }
         }
-    }
-
-
-    private void setOutlineOnly(IShape group, AppStateOpts opts){
-        graphics2d.setStroke(new BasicStroke(5));
-        graphics2d.setColor(opts.activePrimaryColor().color());
-        graphics2d.drawRect(group.getX(), group.getY(), group.getWidth(), group.getHeight());
-
     }
 
     private void setSelectionOutline(IShape rect){
