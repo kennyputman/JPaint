@@ -17,10 +17,9 @@ This interface is implemented by the `ShapeFactory`. The `Rectangle`, `Ellipse`,
 `Group` shapes currently implement the `IShape` interface. 
 
 #### Command Pattern
-The command pattern is used for the creation of shapes, move commands, and select commands. 
-This is handled by the `CreateShapeCommand`, `MoveCommand`, and `SelectCommand` classes.
-This allows for the creation and movement of shapes to implement redo/undo functionality found in
-the `IUndoable` interface. 
+The command pattern is used for the creation of shapes, move commands, select commands, Group Commands, and Copy/Paste
+Commands. This is handled by the `CreateShapeCommand`, `MoveCommand`,`SelectCommand`, etc... classes.
+This allows for the creation and movement of shapes to implement redo/undo functionality found in the `IUndoable` interface. 
 
 #### Strategy Pattern
 The strategy pattern is used to implement the drawing of shapes. This is implemented in the 
@@ -44,6 +43,6 @@ be any `IShape` within the `Group` including other groups.
 
 #### Singleton Pattern
 The singleton pattern in implemented for the `ShapeStore` class. The `ShapeStore` class handles
-persistance and management for all shapes including clipboard for copy/paste and the observers
+persistence and management for all shapes including clipboard for copy/paste and the observers
 for implementing move functionality. The singleton is implemented with a public accessor `getInstance`
 and a private constructor that ensures only a single instance will be created in the application.
