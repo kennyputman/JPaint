@@ -7,6 +7,9 @@ SE 450 Summer 2023
 ## Missing Features and Known Bugs
 No known missing features or bugs.
 
+## Final Exam Changes
+No changes have been made as no points were lost on parts 1-3.
+
 ## Design Patterns
 The project uses the following design patterns
 
